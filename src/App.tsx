@@ -5,8 +5,8 @@ function App() {
   return (
     <div className="App">
       <main data-testid="main-section">
-        This is main Twitter Section
-        <div data-testid="tweet-1">Hello Twitter World</div>
+        <h1>Home</h1>
+        <article>Hello Twitter World</article>
       </main>
     </div>
   );
