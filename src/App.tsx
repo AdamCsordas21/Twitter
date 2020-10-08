@@ -10,20 +10,21 @@ export interface Tweet {
   body: string
 }
 
-const App: FC<AppProps> = ({ tweets }) => {
-  return (
-    <div className="App">
-      <main data-testid="main-section">
-        <h1>Home</h1>
-        {tweets.map((tweet) => (
-          <article>
-            <h3>{tweet.author}</h3>
-            {tweet.body}
-          </article>
-        ))}
-      </main>
-    </div>
-  );
-}
+const Tweet: FC<Tweet> = ({ author, body }) => (
+  <article>
+    <h3>{author}</h3>
+    {body}
+  </article>
+)
+
+const App: FC<AppProps> = ({ tweets }) => (
+  <div className="App">
+    <main data-testid="main-section">
+      <h1>Home</h1>
+      {tweets.map((tweet) => <Tweet {...tweet} />)}
+    </main>
+  </div>
+);
+
 
 export default App;
