@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App, { Tweet } from './App';
 import * as serviceWorker from './serviceWorker';
+
+const tweets: Tweet[] = [
+  { author: 'Adam', body: 'Hello World' },
+]
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App tweets={tweets} />
   </React.StrictMode>,
   document.getElementById('root')
 );

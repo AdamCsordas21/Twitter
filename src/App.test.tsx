@@ -1,23 +1,21 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import App, { Tweet } from './App';
 
 describe('main page', () => {
   it('should render main section', () => {
-    const { getByTestId } = render(<App />);
+    const { getByTestId } = render(<App tweets={[]} />);
     const mainElement = getByTestId('main-section');
     expect(mainElement).toBeInTheDocument();
   });
 
-  it('should render tweet text', () => {
-    const { getByText } = render(<App />);
-    const tweet = getByText('Hello Twitter World');
-    expect(tweet).toBeInTheDocument();
-  })
+  it('should render a tweet', () => {
+    const author = 'Adam'
+    const body = 'Hello Twitter World'
+    const tweets: Tweet[] = [{ author, body }]
 
-  it('should render tweet author name', () => {
-    const { getByText } = render(<App />);
-    const tweet = getByText('Adam');
-    expect(tweet).toBeInTheDocument();
+    const { getByText } = render(<App tweets={tweets} />);
+    expect(getByText(author)).toBeInTheDocument();
+    expect(getByText(body)).toBeInTheDocument();
   })
 });

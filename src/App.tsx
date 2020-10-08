@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './App.css';
 
-function App() {
+interface AppProps {
+  tweets: Tweet[]
+}
+
+export interface Tweet {
+  author: string
+  body: string
+}
+
+const App: FC<AppProps> = ({ tweets }) => {
   return (
     <div className="App">
       <main data-testid="main-section">
         <h1>Home</h1>
-        <article>
-          <h3>Adam</h3>
-          Hello Twitter World
-        </article>
+        {tweets.length > 0 &&
+          <article>
+            <h3>{tweets[0].author}</h3>
+            {tweets[0].body}
+          </article>
+        }
       </main>
     </div>
   );
