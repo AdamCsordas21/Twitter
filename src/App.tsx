@@ -15,12 +15,12 @@ const App: FC<AppProps> = ({ tweets }) => {
     <div className="App">
       <main data-testid="main-section">
         <h1>Home</h1>
-        {tweets.length > 0 &&
+        {tweets.map((tweet) => (
           <article>
-            <h3>{tweets[0].author}</h3>
-            {tweets[0].body}
+            <h3>{tweet.author}</h3>
+            {tweet.body}
           </article>
-        }
+        ))}
       </main>
     </div>
   );

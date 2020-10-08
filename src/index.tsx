@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 const tweets: Tweet[] = [
   { author: 'Adam', body: 'Hello World' },
+  { author: 'Osh', body: 'Hello Adam' },
 ]
 
 ReactDOM.render(
