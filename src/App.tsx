@@ -6,7 +6,10 @@ function App() {
     <div className="App">
       <main data-testid="main-section">
         <h1>Home</h1>
-        <article>Hello Twitter World</article>
+        <article>
+          <h3>Adam</h3>
+          Hello Twitter World
+        </article>
       </main>
     </div>
   );

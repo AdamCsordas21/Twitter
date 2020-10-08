@@ -9,9 +9,15 @@ describe('main page', () => {
     expect(mainElement).toBeInTheDocument();
   });
 
-  it('should render tweets', () => {
+  it('should render tweet text', () => {
     const { getByText } = render(<App />);
     const tweet = getByText('Hello Twitter World');
+    expect(tweet).toBeInTheDocument();
+  })
+
+  it('should render tweet author name', () => {
+    const { getByText } = render(<App />);
+    const tweet = getByText('Adam');
     expect(tweet).toBeInTheDocument();
   })
 });
