@@ -8,4 +8,10 @@ describe('main page', () => {
     const mainElement = getByTestId('main-section');
     expect(mainElement).toBeInTheDocument();
   });
+
+  it('should render tweets', () => {
+    const { getByText } = render(<App />);
+    const tweet = getByText('Hello Twitter World');
+    expect(tweet).toBeInTheDocument();
+  })
 });
