@@ -1,24 +1,18 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App, { Author, Tweet } from './App';
+import Tweet, { Author } from './Tweet';
 
-describe('main page', () => {
-  it('should render main section', () => {
-    const { getByTestId } = render(<App tweets={[]} />);
-    const mainElement = getByTestId('main-section');
-    expect(mainElement).toBeInTheDocument();
-  });
-
-  it('should render tweets', () => {
+describe('tweets', () => {
+it('should render tweets', () => {
     const author: Author = { name: 'Adam', tag: '@AdamCsordas21' }
     const body = 'Hello Twitter World'
     const createdOn = '32 mins ago'
-    const tweets: Tweet[] = [{ author, body, createdOn }]
 
-    const { getByText } = render(<App tweets={tweets} />);
+    const { getByText } = render(<Tweet author={author} body={body} createdOn={createdOn}/>);
     expect(getByText(author.name, { exact: false })).toBeInTheDocument();
     expect(getByText(author.tag, { exact: false })).toBeInTheDocument();
     expect(getByText(body)).toBeInTheDocument();
     expect(getByText(createdOn)).toBeInTheDocument();
   })
 });
+

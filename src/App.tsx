@@ -1,36 +1,10 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import './App.css';
+import Tweet, { TweetProps } from './Tweet';
 
 interface AppProps {
-  tweets: Tweet[]
+  tweets: TweetProps[]
 }
-
-export interface Author {
-  name: string
-  tag: string
-}
-
-export interface Tweet {
-  author: Author
-  body: string
-  createdOn: string
-}
-
-const TweetCreatedOn = styled.span`
-  font-size: 0.8em;
-
-  &::before {
-    content: '- ';
-  }
-`
-
-const Tweet: FC<Tweet> = ({ author, body, createdOn }) => (
-  <article>
-    <h3>{author.name} {author.tag} <TweetCreatedOn>{createdOn}</TweetCreatedOn></h3>
-    {body}
-  </article>
-)
 
 const App: FC<AppProps> = ({ tweets }) => (
   <div className="App">

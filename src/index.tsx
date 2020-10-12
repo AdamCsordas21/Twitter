@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App, { Tweet } from './App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { TweetProps } from './Tweet';
 
-const tweets: Tweet[] = [
+const tweets: TweetProps[] = [
   { author: { name: 'Adam', tag: '@AdamCsordas21' }, body: 'Hello World', createdOn: '1 h' },
   { author: { name: 'Osh', tag: '@oshdev' }, body: 'Hello Adam', createdOn: '2 h' },
   { author: { name: 'Nela', tag: '@nelanelka1' }, body: 'Hello Osh', createdOn: '3 h' },
