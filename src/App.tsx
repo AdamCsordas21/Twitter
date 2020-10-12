@@ -13,11 +13,12 @@ export interface Author {
 export interface Tweet {
   author: Author
   body: string
+  createdOn: string
 }
 
-const Tweet: FC<Tweet> = ({ author, body }) => (
+const Tweet: FC<Tweet> = ({ author, body, createdOn }) => (
   <article>
-    <h3>{author.name} {author.tag}</h3>
+    <h3>{author.name} {author.tag} <span className='tweetCreatedOn'>{createdOn}</span></h3>
     {body}
   </article>
 )

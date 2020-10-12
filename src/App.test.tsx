@@ -12,11 +12,13 @@ describe('main page', () => {
   it('should render tweets', () => {
     const author: Author = { name: 'Adam', tag: '@AdamCsordas21' }
     const body = 'Hello Twitter World'
-    const tweets: Tweet[] = [{ author, body }]
+    const createdOn = '32 mins ago'
+    const tweets: Tweet[] = [{ author, body, createdOn }]
 
     const { getByText } = render(<App tweets={tweets} />);
     expect(getByText(author.name, { exact: false })).toBeInTheDocument();
     expect(getByText(author.tag, { exact: false })).toBeInTheDocument();
     expect(getByText(body)).toBeInTheDocument();
+    expect(getByText(createdOn)).toBeInTheDocument();
   })
 });

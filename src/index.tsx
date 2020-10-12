@@ -5,9 +5,9 @@ import App, { Tweet } from './App';
 import * as serviceWorker from './serviceWorker';
 
 const tweets: Tweet[] = [
-  { author: { name: 'Adam', tag: '@AdamCsordas21' }, body: 'Hello World' },
-  { author: { name: 'Osh', tag: '@oshdev' }, body: 'Hello Adam' },
-  { author: { name: 'Nela', tag: '@nelanelka1' }, body: 'Hello Osh' },
+  { author: { name: 'Adam', tag: '@AdamCsordas21' }, body: 'Hello World', createdOn: '1 h' },
+  { author: { name: 'Osh', tag: '@oshdev' }, body: 'Hello Adam', createdOn: '2 h' },
+  { author: { name: 'Nela', tag: '@nelanelka1' }, body: 'Hello Osh', createdOn: '3 h' },
 ]
 
 ReactDOM.render(
