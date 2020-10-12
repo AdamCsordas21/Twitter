@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import styled from 'styled-components';
 import './App.css';
 
 interface AppProps {
@@ -16,9 +17,17 @@ export interface Tweet {
   createdOn: string
 }
 
+const TweetCreatedOn = styled.span`
+  font-size: 0.8em;
+
+  &::before {
+    content: '- ';
+  }
+`
+
 const Tweet: FC<Tweet> = ({ author, body, createdOn }) => (
   <article>
-    <h3>{author.name} {author.tag} <span className='tweetCreatedOn'>{createdOn}</span></h3>
+    <h3>{author.name} {author.tag} <TweetCreatedOn>{createdOn}</TweetCreatedOn></h3>
     {body}
   </article>
 )

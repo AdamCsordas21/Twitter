@@ -24,11 +24,3 @@ article {
   padding: 7px 100px 40px 100px;
   margin-bottom: -2px;
 }
-
-span.tweetCreatedOn {
-  font-size: 0.8em;
-}
-
-span.tweetCreatedOn::before {
-  content: '- ';
-}
