@@ -17,8 +17,7 @@ export interface Tweet {
 
 const Tweet: FC<Tweet> = ({ author, body }) => (
   <article>
-    <h3>{author.name}</h3>
-    <h3>{author.tag}</h3>
+    <h3>{author.name} {author.tag}</h3>
     {body}
   </article>
 )

@@ -15,8 +15,8 @@ describe('main page', () => {
     const tweets: Tweet[] = [{ author, body }]
 
     const { getByText } = render(<App tweets={tweets} />);
-    expect(getByText(author.name)).toBeInTheDocument();
-    expect(getByText(author.tag)).toBeInTheDocument();
+    expect(getByText(author.name, { exact: false })).toBeInTheDocument();
+    expect(getByText(author.tag, { exact: false })).toBeInTheDocument();
     expect(getByText(body)).toBeInTheDocument();
   })
 });
