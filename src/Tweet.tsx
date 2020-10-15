@@ -28,7 +28,7 @@ const TweetCreatedOn = styled.span`
 `;
 
 const Tweet: FC<TweetProps> = ({ author, body, createdOn }) => (
-  <article data-testid="tweet">
+  <article className="tweet" data-testid="tweet">
     <h3>
       {author.name} {author.tag} <TweetCreatedOn>{createdOn}</TweetCreatedOn>
     </h3>
