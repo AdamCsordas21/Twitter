@@ -14,11 +14,19 @@ describe('main page', () => {
     const tweets: TweetProps[] = [
       {
         author: { name: 'Adam', tag: '@AdamCsordas21' },
-        body: 'Hello Twitter World', createdOn: '32 mins ago', reply: 'Reply', retweet: 'Retweet'
+        body: 'Hello Twitter World', 
+        createdOn: '32 mins ago', 
+        reply: 'Reply', 
+        retweet: 'Retweet', 
+        like: 'like'
       },
       {
         author: { name: 'Osh', tag: '@oshdev' },
-        body: 'Hello Adam', createdOn: '32 mins ago', reply: 'Reply', retweet: 'Retweet'
+        body: 'Hello Adam', 
+        createdOn: '32 mins ago', 
+        reply: 'Reply', 
+        retweet: 'Retweet', 
+        like: 'like'
       }
     ]
 

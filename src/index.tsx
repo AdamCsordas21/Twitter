@@ -8,15 +8,15 @@ import { TweetProps } from './Tweet';
 const tweets: TweetProps[] = [
   {
     author: { name: 'Adam', tag: '@AdamCsordas21' },
-    body: 'Hello World', createdOn: '1 h', reply: 'Reply', retweet: 'Retweet'
+    body: 'Hello World', createdOn: '1 h', reply: 'Reply', retweet: 'Retweet', like: 'Like'
   },
   {
     author: { name: 'Osh', tag: '@oshdev' },
-    body: 'Hello Adam', createdOn: '2 h', reply: 'Reply', retweet: 'Retweet'
+    body: 'Hello Adam', createdOn: '2 h', reply: 'Reply', retweet: 'Retweet', like: 'Like'
   },
   {
     author: { name: 'Nela', tag: '@nelanelka1' },
-    body: 'Hello Osh', createdOn: '3 h', reply: 'Reply', retweet: 'Retweet'
+    body: 'Hello Osh', createdOn: '3 h', reply: 'Reply', retweet: 'Retweet', like: 'Like'
   },
 ]
 

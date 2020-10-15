@@ -9,6 +9,7 @@ describe('tweets', () => {
     const createdOn = '32 mins ago'
     const reply = 'reply'
     const retweet = 'retweet'
+    const like = 'like'
 
     const { getByText } = render(
       <Tweet
@@ -17,6 +18,7 @@ describe('tweets', () => {
         createdOn={createdOn}
         reply={reply}
         retweet={retweet}
+        like={like}
       />
     );
     expect(getByText(author.name, { exact: false })).toBeInTheDocument();
@@ -25,5 +27,6 @@ describe('tweets', () => {
     expect(getByText(createdOn)).toBeInTheDocument();
     expect(getByText(reply, {exact: false})).toBeInTheDocument();
     expect(getByText(retweet, {exact: false})).toBeInTheDocument();
+    expect(getByText(like, {exact: false})).toBeInTheDocument();
   })
 });
