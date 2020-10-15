@@ -10,6 +10,7 @@ describe('tweets', () => {
     const reply = 'reply'
     const retweet = 'retweet'
     const like = 'like'
+    const share = 'share'
 
     const { getByText } = render(
       <Tweet
@@ -19,6 +20,7 @@ describe('tweets', () => {
         reply={reply}
         retweet={retweet}
         like={like}
+        share={share}
       />
     );
     expect(getByText(author.name, { exact: false })).toBeInTheDocument();
@@ -28,5 +30,6 @@ describe('tweets', () => {
     expect(getByText(reply, {exact: false})).toBeInTheDocument();
     expect(getByText(retweet, {exact: false})).toBeInTheDocument();
     expect(getByText(like, {exact: false})).toBeInTheDocument();
+    expect(getByText(share, {exact: false})).toBeInTheDocument();
   })
 });

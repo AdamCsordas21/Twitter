@@ -13,6 +13,7 @@ export interface TweetProps {
   reply: string
   retweet: string
   like: string
+  share: string
 }
 
 const TweetCreatedOn = styled.span`
@@ -23,11 +24,11 @@ const TweetCreatedOn = styled.span`
   }
 `
 
-const Tweet: FC<TweetProps> = ({ author, body, createdOn, reply, retweet, like }) => (
+const Tweet: FC<TweetProps> = ({ author, body, createdOn, reply, retweet, like, share }) => (
   <article data-testid="tweet">
     <h3>{author.name} {author.tag} <TweetCreatedOn>{createdOn}</TweetCreatedOn></h3>
     {body}
-    <h5>{reply} {retweet} {like}</h5>
+    <h5>{reply} {retweet} {like} {share}</h5>
   </article>
 )
 

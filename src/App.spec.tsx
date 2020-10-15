@@ -18,7 +18,8 @@ describe('main page', () => {
         createdOn: '32 mins ago', 
         reply: 'Reply', 
         retweet: 'Retweet', 
-        like: 'like'
+        like: 'like',
+        share: 'share'
       },
       {
         author: { name: 'Osh', tag: '@oshdev' },
@@ -26,7 +27,8 @@ describe('main page', () => {
         createdOn: '32 mins ago', 
         reply: 'Reply', 
         retweet: 'Retweet', 
-        like: 'like'
+        like: 'like',
+        share: 'share'
       }
     ]
 
