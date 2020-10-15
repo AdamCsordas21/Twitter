@@ -12,8 +12,14 @@ describe('main page', () => {
 
   it('should render tweets', () => {
     const tweets: TweetProps[] = [
-      { author: { name: 'Adam', tag: '@AdamCsordas21' }, body: 'Hello Twitter World', createdOn: '32 mins ago' },
-      { author: { name: 'Osh', tag: '@oshdev' }, body: 'Hello Adam', createdOn: '32 mins ago' }
+      {
+        author: { name: 'Adam', tag: '@AdamCsordas21' },
+        body: 'Hello Twitter World', createdOn: '32 mins ago', reply: 'Reply'
+      },
+      {
+        author: { name: 'Osh', tag: '@oshdev' },
+        body: 'Hello Adam', createdOn: '32 mins ago', reply: 'Reply'
+      }
     ]
 
     const { getAllByTestId } = render(<App tweets={tweets} />);
