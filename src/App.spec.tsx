@@ -15,20 +15,12 @@ describe('main page', () => {
       {
         author: { name: 'Adam', tag: '@AdamCsordas21' },
         body: 'Hello Twitter World', 
-        createdOn: '32 mins ago', 
-        reply: 'Reply', 
-        retweet: 'Retweet', 
-        like: 'like',
-        share: 'share'
+        createdOn: '32 mins ago'
       },
       {
         author: { name: 'Osh', tag: '@oshdev' },
         body: 'Hello Adam', 
-        createdOn: '32 mins ago', 
-        reply: 'Reply', 
-        retweet: 'Retweet', 
-        like: 'like',
-        share: 'share'
+        createdOn: '32 mins ago'
       }
     ]
 
