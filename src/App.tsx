@@ -13,6 +13,9 @@ const App: FC<AppProps> = ({ tweets }) => (
     <header>
       <FontAwesomeIcon icon={faDove} />{" "}Home
     </header>
+    <header>
+      What's happening?
+    </header>
     <main data-testid="main-section">
       {tweets.map((tweet, index) => (
         <Tweet key={index} {...tweet} />
