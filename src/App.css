@@ -26,5 +26,12 @@ article.tweet {
 }
 
 span {
-  color: #D3D3D3;
+  color: grey;
+}
+
+img {
+  border: 2px solid black;
+  border-radius: 9999px;
+  border-width: 1px;
+  max-width: 10%;
 }

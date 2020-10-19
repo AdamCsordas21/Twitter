@@ -22,7 +22,10 @@ const App: FC<AppProps> = ({ tweets }) => (
       <FontAwesomeIcon icon={faDove} />{" "}Home
     </header>
     <header>
-      <img src={UserImg} alt="User Profile Img" /><span>What's happening?</span>
+      <div>
+        <img src={UserImg} alt="User Profile Img" />
+      </div>
+      <span>What's happening?</span>
       <h5>
         <FontAwesomeIcon icon={faImage} />{" "}
         <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
