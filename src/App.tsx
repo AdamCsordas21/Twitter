@@ -2,7 +2,14 @@ import React, { FC } from "react";
 import "./App.css";
 import Tweet, { TweetProps } from "./Tweet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDove } from "@fortawesome/free-solid-svg-icons";
+import { 
+  faDove,
+  faImage,
+  faPollH,
+  faSmile,
+  faCalendarAlt,
+  faGrinSquintTears
+ } from "@fortawesome/free-solid-svg-icons";
 
 interface AppProps {
   tweets: TweetProps[];
@@ -14,7 +21,14 @@ const App: FC<AppProps> = ({ tweets }) => (
       <FontAwesomeIcon icon={faDove} />{" "}Home
     </header>
     <header>
-      What's happening?
+      <span>What's happening?</span>
+      <h5>
+        <FontAwesomeIcon icon={faImage} />{" "}
+        <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
+        <FontAwesomeIcon icon={faPollH} />{" "}
+        <FontAwesomeIcon icon={faSmile} />{" "}
+        <FontAwesomeIcon icon={faCalendarAlt} />
+      </h5>
     </header>
     <main data-testid="main-section">
       {tweets.map((tweet, index) => (
