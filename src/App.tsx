@@ -10,6 +10,7 @@ import {
   faCalendarAlt,
   faGrinSquintTears
  } from "@fortawesome/free-solid-svg-icons";
+ import UserImg from "./images/UserImg.jpg"
 
 interface AppProps {
   tweets: TweetProps[];
@@ -21,7 +22,7 @@ const App: FC<AppProps> = ({ tweets }) => (
       <FontAwesomeIcon icon={faDove} />{" "}Home
     </header>
     <header>
-      <span>What's happening?</span>
+      <img src={UserImg} alt="User Profile Img" /><span>What's happening?</span>
       <h5>
         <FontAwesomeIcon icon={faImage} />{" "}
         <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
