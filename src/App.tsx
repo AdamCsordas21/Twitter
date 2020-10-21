@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./App.css";
 import { TweetModel } from "./";
 import Tweet from "./Tweet";
@@ -31,36 +31,39 @@ const NewTweetButton = styled.button`
 `
 
 interface AppProps {
-  tweets: TweetModel[];
+  initialTweets: TweetModel[];
 }
 
-const App: FC<AppProps> = ({ tweets }) => (
-  <div className="App">
-    <header>
-      <FontAwesomeIcon icon={faTwitter} /> Home
-    </header>
-    <header>
-      <div>
-        <img src={userImg} alt="User Profile Img" />
-      </div>
-      <form>
-        <NewTweetInput placeholder="What's happening?" />
-        <NewTweetButton>Tweet</NewTweetButton>
-      </form>
-      <h5>
-        <FontAwesomeIcon icon={faImage} />{" "}
-        <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
-        <FontAwesomeIcon icon={faPollH} />{" "}
-        <FontAwesomeIcon icon={faSmile} />{" "}
-        <FontAwesomeIcon icon={faCalendarAlt} />
-      </h5>
-    </header>
-    <main data-testid="main-section">
-      {tweets.map((tweet, index) => (
-        <Tweet key={index} {...tweet} />
-      ))}
-    </main>
-  </div>
-);
+const App: FC<AppProps> = ({ initialTweets }) => {
+  const [ tweets ] = useState(initialTweets)
+  return (
+    <div className="App">
+      <header>
+        <FontAwesomeIcon icon={faTwitter} /> Home
+      </header>
+      <header>
+        <div>
+          <img src={userImg} alt="User Profile Img" />
+        </div>
+        <form>
+          <NewTweetInput placeholder="What's happening?" />
+          <NewTweetButton>Tweet</NewTweetButton>
+        </form>
+        <h5>
+          <FontAwesomeIcon icon={faImage} />{" "}
+          <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
+          <FontAwesomeIcon icon={faPollH} />{" "}
+          <FontAwesomeIcon icon={faSmile} />{" "}
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </h5>
+      </header>
+      <main data-testid="main-section">
+        {tweets.map((tweet, index) => (
+          <Tweet key={index} {...tweet} />
+        ))}
+      </main>
+    </div>
+  );
+};
 
 export default App;

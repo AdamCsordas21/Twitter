@@ -35,7 +35,7 @@ const tweets: TweetModel[] = [
 
 ReactDOM.render(
   <React.StrictMode>
-    <App tweets={tweets} />
+    <App initialTweets={tweets} />
   </React.StrictMode>,
   document.getElementById('root')
 );

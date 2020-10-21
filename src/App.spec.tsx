@@ -5,7 +5,7 @@ import { TweetModel } from "./";
 
 describe("main page", () => {
   it("should render main section", () => {
-    const { getByTestId } = render(<App tweets={[]} />);
+    const { getByTestId } = render(<App initialTweets={[]} />);
     const mainElement = getByTestId("main-section");
     expect(mainElement).toBeInTheDocument();
   });
@@ -24,7 +24,7 @@ describe("main page", () => {
       },
     ];
 
-    const { getAllByTestId } = render(<App tweets={tweets} />);
+    const { getAllByTestId } = render(<App initialTweets={tweets} />);
     expect(getAllByTestId("tweet")).toHaveLength(2);
   });
 });
