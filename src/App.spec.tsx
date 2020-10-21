@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import App from "./App";
 import { TweetModel } from "./";
 
@@ -27,4 +28,14 @@ describe("main page", () => {
     const { getAllByTestId } = render(<App initialTweets={tweets} />);
     expect(getAllByTestId("tweet")).toHaveLength(2);
   });
+  
+  it("should let user create new tweet", () => {
+    const { getByText, getByPlaceholderText, getByTestId } = render(<App initialTweets={[]} />);
+    
+    userEvent.type(getByPlaceholderText("What's happening?"), "adam")
+    userEvent.click(getByText("Tweet"))
+    
+    expect(getByTestId("tweet")).toBeInTheDocument()
+  })
+  
 });

@@ -28,14 +28,15 @@ const NewTweetButton = styled.button`
   border: none;
   color: white;
   background-color: lightblue;
-`
+`;
 
 interface AppProps {
   initialTweets: TweetModel[];
 }
 
 const App: FC<AppProps> = ({ initialTweets }) => {
-  const [ tweets ] = useState(initialTweets)
+  const [tweets, setTweets] = useState(initialTweets);
+  const [newTweetBody, changeTweetBody] = useState("");
   return (
     <div className="App">
       <header>
@@ -45,15 +46,28 @@ const App: FC<AppProps> = ({ initialTweets }) => {
         <div>
           <img src={userImg} alt="User Profile Img" />
         </div>
-        <form>
-          <NewTweetInput placeholder="What's happening?" />
-          <NewTweetButton>Tweet</NewTweetButton>
-        </form>
+        <NewTweetInput
+          placeholder="What's happening?"
+          onChange={(event) => changeTweetBody(event.target.value)}
+          value={newTweetBody}
+        />
+        <NewTweetButton
+          onClick={() =>
+            setTweets([
+              {
+                author: { name: "adam", tag: "@adam" },
+                body: newTweetBody,
+                createdOn: "now",
+              },
+            ])
+          }
+        >
+          Tweet
+        </NewTweetButton>
         <h5>
           <FontAwesomeIcon icon={faImage} />{" "}
           <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
-          <FontAwesomeIcon icon={faPollH} />{" "}
-          <FontAwesomeIcon icon={faSmile} />{" "}
+          <FontAwesomeIcon icon={faPollH} /> <FontAwesomeIcon icon={faSmile} />{" "}
           <FontAwesomeIcon icon={faCalendarAlt} />
         </h5>
       </header>
