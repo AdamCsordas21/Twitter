@@ -54,6 +54,7 @@ const App: FC<AppProps> = ({ initialTweets }) => {
         <NewTweetButton
           onClick={() => {
             setTweets([
+              ...tweets,
               {
                 author: { name: "adam", tag: "@adam" },
                 body: newTweetBody,
