@@ -19,7 +19,7 @@ interface AppProps {
 const App: FC<AppProps> = ({ tweets }) => (
   <div className="App">
     <header>
-      <FontAwesomeIcon icon={faDove} />{" "}Home
+      <FontAwesomeIcon icon={faDove} /> Home
     </header>
     <header>
       <div>
