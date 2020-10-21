@@ -2,15 +2,24 @@ import React, { FC } from "react";
 import "./App.css";
 import Tweet, { TweetProps } from "./Tweet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-  faDove,
+import {
   faImage,
   faPollH,
   faSmile,
   faCalendarAlt,
-  faGrinSquintTears
- } from "@fortawesome/free-solid-svg-icons";
- import UserImg from "./images/UserImg.jpg"
+  faGrinSquintTears,
+} from "@fortawesome/free-solid-svg-icons";
+import userImg from "./images/UserImg.jpg";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import styled from "styled-components";
+
+const NewTweetInput = styled.textarea`
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  background: inherit;
+  border-radius: 2px;
+`;
 
 interface AppProps {
   tweets: TweetProps[];
@@ -19,17 +28,17 @@ interface AppProps {
 const App: FC<AppProps> = ({ tweets }) => (
   <div className="App">
     <header>
-      <FontAwesomeIcon icon={faDove} /> Home
+      <FontAwesomeIcon icon={faTwitter} /> Home
     </header>
     <header>
       <div>
-        <img src={UserImg} alt="User Profile Img" />
+        <img src={userImg} alt="User Profile Img" />
       </div>
-      <span>What's happening?</span>
+      <NewTweetInput placeholder="What's happening?"></NewTweetInput>
       <h5>
         <FontAwesomeIcon icon={faImage} />{" "}
         <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
-        <FontAwesomeIcon icon={faPollH} />{" "}
+        <FontAwesomeIcon icon={faPollH} />
         <FontAwesomeIcon icon={faSmile} />{" "}
         <FontAwesomeIcon icon={faCalendarAlt} />
       </h5>
