@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Tweet, { Author } from "./Tweet";
+import { Author } from "./";
+import Tweet from "./Tweet";
 
 describe("tweets", () => {
   it("should render tweets", () => {

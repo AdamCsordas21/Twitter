@@ -7,17 +7,7 @@ import {
   faHeart,
   faShare,
 } from "@fortawesome/free-solid-svg-icons";
-
-export interface Author {
-  name: string;
-  tag: string;
-}
-
-export interface TweetProps {
-  author: Author;
-  body: string;
-  createdOn: string;
-}
+import { TweetModel } from './';
 
 const TweetCreatedOn = styled.span`
   font-size: 0.8em;
@@ -27,7 +17,7 @@ const TweetCreatedOn = styled.span`
   }
 `;
 
-const Tweet: FC<TweetProps> = ({ author, body, createdOn }) => (
+const Tweet: FC<TweetModel> = ({ author, body, createdOn }) => (
   <article className="tweet" data-testid="tweet">
     <h3>
       {author.name} {author.tag} <TweetCreatedOn>{createdOn}</TweetCreatedOn>

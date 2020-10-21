@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
-import { TweetProps } from "./Tweet";
+import { TweetModel } from "./";
 
 describe("main page", () => {
   it("should render main section", () => {
@@ -11,7 +11,7 @@ describe("main page", () => {
   });
 
   it("should render tweets", () => {
-    const tweets: TweetProps[] = [
+    const tweets: TweetModel[] = [
       {
         author: { name: "Adam", tag: "@AdamCsordas21" },
         body: "Hello Twitter World",

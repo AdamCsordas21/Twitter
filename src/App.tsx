@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import "./App.css";
-import Tweet, { TweetProps } from "./Tweet";
+import { TweetModel } from "./";
+import Tweet from "./Tweet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faImage,
@@ -30,7 +31,7 @@ const NewTweetButton = styled.button`
 `
 
 interface AppProps {
-  tweets: TweetProps[];
+  tweets: TweetModel[];
 }
 
 const App: FC<AppProps> = ({ tweets }) => (

@@ -3,9 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { TweetProps } from './Tweet';
 
-const tweets: TweetProps[] = [
+export interface TweetModel {
+  author: Author;
+  body: string;
+  createdOn: string;
+}
+
+export interface Author {
+  name: string;
+  tag: string;
+}
+
+const tweets: TweetModel[] = [
   {
     author: { name: 'Adam', tag: '@AdamCsordas21' },
     body: 'Hello World', 
