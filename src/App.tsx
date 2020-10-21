@@ -38,7 +38,7 @@ const App: FC<AppProps> = ({ tweets }) => (
       <h5>
         <FontAwesomeIcon icon={faImage} />{" "}
         <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
-        <FontAwesomeIcon icon={faPollH} />
+        <FontAwesomeIcon icon={faPollH} />{" "}
         <FontAwesomeIcon icon={faSmile} />{" "}
         <FontAwesomeIcon icon={faCalendarAlt} />
       </h5>
