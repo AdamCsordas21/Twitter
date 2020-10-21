@@ -32,10 +32,18 @@ describe("main page", () => {
   it("should let user create new tweet", () => {
     const { getByText, getByPlaceholderText, getByTestId } = render(<App initialTweets={[]} />);
     
-    userEvent.type(getByPlaceholderText("What's happening?"), "adam")
+    userEvent.type(getByPlaceholderText("What's happening?"), "new tweet body")
     userEvent.click(getByText("Tweet"))
     
     expect(getByTestId("tweet")).toBeInTheDocument()
   })
-  
+
+  it("should clear the input field after creating a tweet", () => {
+    const { getByText, getByPlaceholderText } = render(<App initialTweets={[]} />);
+
+    userEvent.type(getByPlaceholderText("What's happening?"), "some input body")
+    userEvent.click(getByText("Tweet"))
+
+    expect(getByPlaceholderText("What's happening?")).toBeEmpty()
+  })
 });
