@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import tweets from './tweets.json'
 
 export interface TweetModel {
   author: Author;
@@ -14,24 +15,6 @@ export interface Author {
   name: string;
   tag: string;
 }
-
-const tweets: TweetModel[] = [
-  {
-    author: { name: 'Adam', tag: '@AdamCsordas21' },
-    body: 'Hello World', 
-    createdOn: '1 h'
-  },
-  {
-    author: { name: 'Osh', tag: '@oshdev' },
-    body: 'Hello Adam', 
-    createdOn: '2 h'
-  },
-  {
-    author: { name: 'Nela', tag: '@nelanelka1' },
-    body: 'Hello Osh', 
-    createdOn: '3 h'
-  },
-]
 
 ReactDOM.render(
   <React.StrictMode>
