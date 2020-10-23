@@ -16,6 +16,11 @@ export interface Author {
   tag: string;
 }
 
+export interface User {
+  name: string
+  tag: string
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <App initialTweets={tweets} />
