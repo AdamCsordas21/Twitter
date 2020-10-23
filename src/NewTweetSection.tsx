@@ -1,6 +1,5 @@
 import React from 'react'
-import { Dispatch, FC, SetStateAction, useState } from "react";
-import { TweetModel } from ".";
+import { FC, useState } from "react";
 import userImg from "./images/UserImg.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
@@ -28,12 +27,12 @@ const NewTweetButton = styled.button`
   background-color: lightblue;
 `;
 
+export type AddTweetFn = (body: string) => void
 export interface NewTweetSectionProps {
-  tweets: TweetModel[]
-  setTweets: Dispatch<SetStateAction<TweetModel[]>>
+  addTweet: AddTweetFn
 }
 
-const NewTweetSection: FC<NewTweetSectionProps> = ({ tweets, setTweets }) => {
+const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
   const [newTweetBody, changeTweetBody] = useState<string>("");
   return (
     <header>
@@ -47,14 +46,7 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ tweets, setTweets }) => {
       />
       <NewTweetButton
         onClick={() => {
-          setTweets([
-            ...tweets,
-            {
-              author: { name: "adam", tag: "@adam" },
-              body: newTweetBody,
-              createdOn: "now",
-            },
-          ]);
+          addTweet(newTweetBody)
           changeTweetBody('')
         }}
       >
