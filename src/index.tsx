@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import tweets from './tweets.json'
+import tweets from './tweets.json';
 
 export interface TweetModel {
   author: Author;
@@ -19,6 +19,12 @@ export interface Author {
 export interface User {
   name: string
   tag: string
+}
+
+export interface UserAuth {
+  name: string
+  passwordHash: string
+  passwordSalt: string
 }
 
 ReactDOM.render(

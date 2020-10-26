@@ -1,0 +1,17 @@
+[
+  {
+    "name": "adam",
+    "passwordHash": "6e7bdfc00519b9f764c8da667b6c5a43de1d3a07e1568d56a9aaa36fb2e6948b",
+    "passwordSalt": "bc32036892"
+  },
+  {
+    "name": "osh",
+    "passwordHash": "608bac9d9e958b56401f3f20490cee80f67e37b84e65637bf5f336979a8ed93a",
+    "passwordSalt": "d67a74c609"
+  },
+  {
+    "name": "nela",
+    "passwordHash": "bff5f00039a83a65b2e9fec5222debef3286fd22f40383e4978c85c82c16e79d",
+    "passwordSalt": "627569363a"
+  }
+]
