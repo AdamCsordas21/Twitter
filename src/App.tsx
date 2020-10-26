@@ -2,8 +2,7 @@ import React, { FC, useState } from "react";
 import "./App.css";
 import { TweetModel } from "./";
 import Tweet from "./Tweet";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import Header from "./Header";
 import NewTweetSection, { AddTweetFn } from "./NewTweetSection";
 
 interface AppProps {
@@ -24,11 +23,10 @@ const App: FC<AppProps> = ({ initialTweets }) => {
 
   return (
     <div className="App">
-      <header>
-        <FontAwesomeIcon icon={faTwitter} /> Home
-      </header>
+      <Header />
       <NewTweetSection addTweet={addTweetFn} />
       <main data-testid="main-section">
+        {/* tweets */}
         {tweets.map((tweet, index) => (
           <Tweet key={index} {...tweet} />
         ))}
