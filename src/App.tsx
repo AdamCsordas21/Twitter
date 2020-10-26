@@ -12,11 +12,14 @@ interface AppProps {
 }
 
 const FlexBox = styled.div`
-  display: flex
+  display: flex;
+  justify-content: center;
+
 `
 
 const Main = styled.main`
-  flex: 1 1 auto
+  flex: 1 1 600px;
+  max-width: 800px;
 `
 
 const App: FC<AppProps> = ({ initialTweets }) => {
