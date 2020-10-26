@@ -17,6 +17,11 @@ const NewTweetInput = styled.textarea`
   width: 100%;
   background: inherit;
   border-radius: 2px;
+  color: white;
+
+  &::placeholder {
+    color: grey;
+  }
 `;
 
 const NewTweetButton = styled.button`

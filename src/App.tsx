@@ -4,10 +4,20 @@ import { TweetModel } from "./";
 import Tweet from "./Tweet";
 import Header from "./Header";
 import NewTweetSection, { AddTweetFn } from "./NewTweetSection";
+import SideNav from "./SideNav";
+import styled from "styled-components";
 
 interface AppProps {
   initialTweets: TweetModel[];
 }
+
+const FlexBox = styled.div`
+  display: flex
+`
+
+const Main = styled.main`
+  flex: 1 1 auto
+`
 
 const App: FC<AppProps> = ({ initialTweets }) => {
   const [tweets, setTweets] = useState<TweetModel[]>(initialTweets);
@@ -22,16 +32,17 @@ const App: FC<AppProps> = ({ initialTweets }) => {
     ]);
 
   return (
-    <div className="App">
-      <Header />
-      <NewTweetSection addTweet={addTweetFn} />
-      <main data-testid="main-section">
+    <FlexBox>
+      <SideNav />
+      <Main data-testid="main-section">
+        <Header />
+        <NewTweetSection addTweet={addTweetFn} />
         {/* tweets */}
         {tweets.map((tweet, index) => (
           <Tweet key={index} {...tweet} />
         ))}
-      </main>
-    </div>
+      </Main>
+    </FlexBox>
   );
 };
 

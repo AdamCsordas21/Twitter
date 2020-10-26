@@ -25,10 +25,6 @@ article.tweet {
   padding: 20px;
 }
 
-span {
-  color: grey;
-}
-
 img {
   border: 2px solid black;
   border-radius: 9999px;
