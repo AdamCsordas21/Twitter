@@ -21,6 +21,18 @@ describe("with authentication", () => {
     expect(loggingInSpy).toHaveBeenCalledWith(user, pass);
   });
 
+  it("should handle unsuccessful login attempt", () => {
+    const loggingInStub = jest.fn(() => null);
+
+    const { getByText } = render(
+      <WithAuthentication logInFunc={loggingInStub} />
+    );
+
+    userEvent.click(getByText("log in"));
+
+    expect(getByText("Invalid user credentials")).toBeInTheDocument();
+  })
+
   it("should show children after successful login", () => {
     const user: User = {
       name: "adam",
