@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { User } from ".";
-import { WithAuthentication } from "./WithAuthentication";
+import { WithLoginForm } from "./WithAuthentication";
 
 describe("with authentication", () => {
   it("should call log in function with username and password", () => {
@@ -11,7 +11,7 @@ describe("with authentication", () => {
     const loggingInSpy = jest.fn();
 
     const { getByPlaceholderText, getByText } = render(
-      <WithAuthentication logInFunc={loggingInSpy} />
+      <WithLoginForm logInFunc={loggingInSpy} />
     );
 
     userEvent.type(getByPlaceholderText("user"), user);
@@ -25,7 +25,7 @@ describe("with authentication", () => {
     const loggingInStub = jest.fn(() => null);
 
     const { getByText } = render(
-      <WithAuthentication logInFunc={loggingInStub} />
+      <WithLoginForm logInFunc={loggingInStub} />
     );
 
     userEvent.click(getByText("log in"));
@@ -41,9 +41,9 @@ describe("with authentication", () => {
     const loggingInStub = jest.fn(() => user);
 
     const { getByText } = render(
-      <WithAuthentication logInFunc={loggingInStub}>
+      <WithLoginForm logInFunc={loggingInStub}>
         logged in
-      </WithAuthentication>
+      </WithLoginForm>
     );
 
     userEvent.click(getByText("log in"));

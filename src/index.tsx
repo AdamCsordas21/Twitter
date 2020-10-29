@@ -1,9 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import tweets from './tweets.json';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import tweets from "./data/tweets.json";
+import users from "./data/users.json";
+import userCreds from "./data/user-auth.json";
+import { WithAuthentication } from "./WithAuthentication";
+import { findUser, isValid } from "./hashing";
 
 export interface TweetModel {
   author: Author;
@@ -17,21 +21,28 @@ export interface Author {
 }
 
 export interface User {
-  name: string
-  tag: string
+  name: string;
+  tag: string;
 }
 
 export interface UserAuth {
-  name: string
-  passwordHash: string
-  passwordSalt: string
+  name: string;
+  passwordHash: string;
+  passwordSalt: string;
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <App initialTweets={tweets} />
+    <WithAuthentication
+      users={users}
+      userCreds={userCreds}
+      findUser={findUser}
+      isValidPassword={isValid}
+    >
+      <App initialTweets={tweets} />
+    </WithAuthentication>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
