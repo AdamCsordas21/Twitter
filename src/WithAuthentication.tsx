@@ -1,16 +1,53 @@
-import React, { FC } from 'react'
-import { User } from './index'
+import React, { FC, useState } from "react";
+import { User } from "./index";
 
-export interface WithAuthenticationProps {
-  user?: User
+interface LoginPageProps {
+  logInFunc: LogInFunc;
 }
 
-export const WithAuthentication: FC<WithAuthenticationProps> = ({ children, user }) => user ? <>{children}</> : <LoginPage />
+const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
+  const [user, setUser] = useState<string>("");
+  const [pass, setPass] = useState<string>("");
+  return (
+    <form
+      data-testid="login-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        logInFunc(user, pass);
+      }}
+    >
+      <label>
+        user{" "}
+        <input
+          placeholder="user"
+          type="text"
+          name="user"
+          onChange={(e) => setUser(e.target.value)}
+        />
+      </label>
+      <label>
+        pass{" "}
+        <input
+          placeholder="password"
+          type="password"
+          name="pass"
+          onChange={(e) => setPass(e.target.value)}
+        />
+      </label>
+      <input type="submit" value="log in" />
+    </form>
+  );
+};
 
-const LoginPage: FC = () => (
-  <form data-testid="login-form">
-    <label>user <input type="text" name="user" /></label>
-    <label>pass <input type="password" name="pass" /></label>
-    <input type="submit" value="log in" />
-  </form>
-)
+type LogInFunc = (user: string, pass: string) => User;
+
+export interface WithAuthenticationProps {
+  user?: User;
+  logInFunc: LogInFunc;
+}
+
+export const WithAuthentication: FC<WithAuthenticationProps> = ({
+  children,
+  user,
+  logInFunc,
+}) => (user ? <>{children}</> : <LoginPage logInFunc={logInFunc} />);
