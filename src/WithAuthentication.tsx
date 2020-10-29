@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { User } from "./index";
 
 interface LoginPageProps {
-  logInFunc: LogInFunc;
+  logInFunc: (user: string, pass: string) => void;
 }
 
 const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
@@ -39,15 +39,19 @@ const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
   );
 };
 
-type LogInFunc = (user: string, pass: string) => User;
+type LogInFunc = (user: string, pass: string) => User | null;
 
 export interface WithAuthenticationProps {
-  user?: User;
   logInFunc: LogInFunc;
 }
 
 export const WithAuthentication: FC<WithAuthenticationProps> = ({
   children,
-  user,
   logInFunc,
-}) => (user ? <>{children}</> : <LoginPage logInFunc={logInFunc} />);
+}) => {
+  const [user, setUser] = useState<User | null>(null);
+  const myLogInFunc = (user: string, pass: string): void => {
+    setUser(logInFunc(user, pass));
+  };
+  return user !== null ? <>{children}</> : <LoginPage logInFunc={myLogInFunc} />;
+};
