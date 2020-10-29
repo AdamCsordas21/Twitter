@@ -1,15 +1,12 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import "./App.css";
-import { TweetModel } from "./";
+import { TweetModel, User } from "./";
 import Tweet from "./Tweet";
 import Header from "./Header";
 import NewTweetSection, { AddTweetFn } from "./NewTweetSection";
 import SideNav from "./SideNav";
 import styled from "styled-components";
-
-interface AppProps {
-  initialTweets: TweetModel[];
-}
+import { UserContext } from "./WithAuthentication";
 
 const FlexBox = styled.div`
   display: flex;
@@ -22,13 +19,19 @@ const Main = styled.main`
   max-width: 800px;
 `
 
+interface AppProps {
+  initialTweets: TweetModel[];
+}
+
 const App: FC<AppProps> = ({ initialTweets }) => {
+  const user = useContext<User>(UserContext)
+
   const [tweets, setTweets] = useState<TweetModel[]>(initialTweets);
   const addTweetFn: AddTweetFn = (newTweetBody: string) =>
     setTweets([
       ...tweets,
       {
-        author: { name: "adam", tag: "@adam" },
+        author: user,
         body: newTweetBody,
         createdOn: "now",
       },

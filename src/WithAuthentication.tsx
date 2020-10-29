@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { createContext, FC, useState } from "react";
 import { User, UserAuth } from "./index";
 
 interface LoginPageProps {
@@ -65,6 +65,9 @@ export const WithLoginForm: FC<WithLoginFormProps> = ({
   );
 };
 
+const tempUser: User = { name: "", tag: "@" };
+export const UserContext = createContext<User>(tempUser);
+
 interface WithAuthenticationProps {
   users: User[];
   userCreds: UserAuth[];
@@ -82,11 +85,22 @@ export const WithAuthentication: FC<WithAuthenticationProps> = ({
   findUser,
   children,
 }) => {
+  const [loggedInUser, setLoggedInUser] = useState<User>(tempUser);
   const logInFunc: LogInFunc = (user, pass) => {
     const maybeUser = findUser(user, userCreds);
-    return !isValidPassword(pass, maybeUser)
-      ? null
-      : (users.find((u: User) => u.name === maybeUser.name) as User);
+    let authUser: User | null = null;
+    if (isValidPassword(pass, maybeUser)) {
+      authUser = users.find((u: User) => u.name === maybeUser.name) as User;
+      setLoggedInUser(authUser);
+    }
+    return authUser;
   };
-  return <WithLoginForm logInFunc={logInFunc}>{children}</WithLoginForm>;
+
+  return (
+    <WithLoginForm logInFunc={logInFunc}>
+      <UserContext.Provider value={loggedInUser}>
+        {children}
+      </UserContext.Provider>
+    </WithLoginForm>
+  );
 };

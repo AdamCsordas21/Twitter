@@ -2,7 +2,8 @@ import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import { TweetModel } from "./";
+import { TweetModel, User } from "./";
+import { UserContext } from "./WithAuthentication";
 
 describe("main page", () => {
   it("should render main section", () => {
@@ -26,37 +27,50 @@ describe("main page", () => {
 
   describe("new tweet section", () => {
     it("should let user create new tweet", () => {
+      const user: User = {
+        name: "userName",
+        tag: "@userTag",
+      };
       const { getByText, getByPlaceholderText, getByTestId } = render(
-        <App initialTweets={[]} />
+        <App initialTweets={[]} />,
+        {
+          wrapper: ({ children }) => (
+            <UserContext.Provider value={user}>{children}</UserContext.Provider>
+          ),
+        }
       );
-  
+
       userEvent.type(
         getByPlaceholderText("What's happening?"),
         "new tweet body"
       );
       userEvent.click(getByText("Tweet"));
-  
+
       expect(getByTestId("tweet")).toBeInTheDocument();
+      expect(getByText("userName", { exact: false })).toBeInTheDocument();
+      expect(getByText("@userTag", { exact: false })).toBeInTheDocument();
     });
-  
+
     it("should not erase existing tweets when creating new one", () => {
       const { getByText, getByPlaceholderText, getAllByTestId } = render(
         <App initialTweets={dummyTweets} />
       );
-  
+
       userEvent.type(
         getByPlaceholderText("What's happening?"),
         "new tweet body"
       );
       userEvent.click(getByText("Tweet"));
-  
+
       expect(getAllByTestId("tweet")).toHaveLength(dummyTweets.length + 1);
     });
-  })
+  });
 
   describe("tweet section", () => {
     it("should render tweets", () => {
-      const { getAllByTestId } = render(<App initialTweets={dummyTweets} />);
+      const { getAllByTestId } = render(
+        <App initialTweets={dummyTweets} />
+      );
       expect(getAllByTestId("tweet")).toHaveLength(2);
     });
   });
