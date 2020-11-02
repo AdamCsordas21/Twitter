@@ -2,23 +2,28 @@ import React, { createContext, FC, useState } from "react";
 import { User, UserAuth } from "./index";
 
 interface LoginPageProps {
-  logInFunc: LogInFunc;
+  logInFunc(user: string, pass: string): void;
 }
 
 const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
   const [user, setUser] = useState<string>("");
   const [pass, setPass] = useState<string>("");
-  const [success, setSuccess] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(
+    undefined
+  );
   return (
     <form
       data-testid="login-form"
       onSubmit={(e) => {
         e.preventDefault();
-        const result = logInFunc(user, pass);
-        setSuccess(!!result);
+        try {
+          logInFunc(user, pass);
+        } catch (e) {
+          setErrorMessage(e.message);
+        }
       }}
     >
-      {!success && <div>Invalid user credentials</div>}
+      {errorMessage && <div>{errorMessage}</div>}
       <label>
         user{" "}
         <input
@@ -42,7 +47,10 @@ const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
   );
 };
 
-type LogInFunc = (user: string, pass: string) => User | null;
+/**
+ * @throws Error when user credentials are invalid or user is not found
+ */
+type LogInFunc = (user: string, pass: string) => User;
 
 export interface WithLoginFormProps {
   logInFunc: LogInFunc;
@@ -53,10 +61,8 @@ export const WithLoginForm: FC<WithLoginFormProps> = ({
   logInFunc,
 }) => {
   const [user, setUser] = useState<User | null>(null);
-  const myLogInFunc: LogInFunc = (user, pass) => {
-    const result: User | null = logInFunc(user, pass);
-    setUser(result);
-    return result;
+  const myLogInFunc: LoginPageProps['logInFunc'] = (user, pass) => {
+    setUser(logInFunc(user, pass));
   };
   return user !== null ? (
     <>{children}</>
@@ -71,11 +77,11 @@ export const UserContext = createContext<User>(tempUser);
 interface WithAuthenticationProps {
   users: User[];
   userCreds: UserAuth[];
-  isValidPassword: (
+  isValidPassword(
     pass: string,
     { passwordSalt, passwordHash }: UserAuth
-  ) => boolean;
-  findUser: (user: string, users: UserAuth[]) => UserAuth;
+  ): boolean;
+  findUser(user: string, users: UserAuth[]): UserAuth;
 }
 
 export const WithAuthentication: FC<WithAuthenticationProps> = ({
@@ -88,12 +94,15 @@ export const WithAuthentication: FC<WithAuthenticationProps> = ({
   const [loggedInUser, setLoggedInUser] = useState<User>(tempUser);
   const logInFunc: LogInFunc = (user, pass) => {
     const maybeUser = findUser(user, userCreds);
-    let authUser: User | null = null;
     if (isValidPassword(pass, maybeUser)) {
-      authUser = users.find((u: User) => u.name === maybeUser.name) as User;
+      const authUser = users.find((u: User) => u.name === maybeUser.name);
+      if (authUser === undefined) {
+        throw new Error("User not found");
+      }
       setLoggedInUser(authUser);
+      return authUser;
     }
-    return authUser;
+    throw new Error("Invalid user credentials");
   };
 
   return (
