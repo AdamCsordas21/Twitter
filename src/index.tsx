@@ -35,8 +35,7 @@ ReactDOM.render(
   <React.StrictMode>
     <WithAuthentication
       users={users}
-      userCreds={userCreds}
-      findUser={findUser}
+      findUser={(user: string) => findUser(user, userCreds)}
       isValidPassword={isValid}
     >
       <App initialTweets={tweets} />

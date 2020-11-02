@@ -22,10 +22,7 @@ describe("with login form", () => {
   });
 
   it("should show children after successful login", () => {
-    const user: User = {
-      name: "adam",
-      tag: "@adam",
-    };
+    const user: User = { name: "adam", tag: "@adam" };
     const loggingInStub = jest.fn(() => user);
 
     const { getByText } = render(
@@ -39,6 +36,33 @@ describe("with login form", () => {
 });
 
 describe("with authentication", () => {
+  it("should display page contents upon successful log in", () => {
+    const userName = "dummy user name";
+    const foundUserDummy: UserAuth = {
+      name: userName,
+      passwordSalt: "salt",
+      passwordHash: "hash",
+    };
+
+    const users: User[] = [{ name: userName, tag: "@tag" }];
+    const findUserDummy = jest.fn(() => foundUserDummy);
+    const isValidPasswordStub = jest.fn(() => true);
+
+    const { getByText } = render(
+      <WithAuthentication
+        users={users}
+        isValidPassword={isValidPasswordStub}
+        findUser={findUserDummy}
+      >
+        logged in
+      </WithAuthentication>
+    );
+
+    userEvent.click(getByText("log in"));
+
+    expect(getByText("logged in")).toBeInTheDocument();
+  });
+
   it("should handle unsuccessful login attempt", () => {
     const fakeUser: UserAuth = {
       name: "adam",
@@ -47,14 +71,12 @@ describe("with authentication", () => {
     };
 
     const users: User[] = [];
-    const userCreds: UserAuth[] = [];
     const findUserDummy = jest.fn(() => fakeUser);
     const isValidPasswordStub = jest.fn(() => false);
 
     const { getByText, queryByText } = render(
       <WithAuthentication
         users={users}
-        userCreds={userCreds}
         isValidPassword={isValidPasswordStub}
         findUser={findUserDummy}
       >
@@ -67,23 +89,21 @@ describe("with authentication", () => {
     expect(queryByText("logged in")).not.toBeInTheDocument();
     expect(getByText("Invalid user credentials")).toBeInTheDocument();
   });
-  
+
   it("should show error when user has authenticated, but their details are not found", () => {
-    const userAuth: UserAuth = {
+    const foundUserDummy: UserAuth = {
       name: "adam",
       passwordSalt: "salt",
       passwordHash: "hash",
     };
 
     const users: User[] = [];
-    const userCreds: UserAuth[] = [userAuth];
-    const findUserDummy = jest.fn(() => userAuth);
+    const findUserDummy = jest.fn(() => foundUserDummy);
     const isValidPasswordStub = jest.fn(() => true);
 
     const { getByText, queryByText } = render(
       <WithAuthentication
         users={users}
-        userCreds={userCreds}
         isValidPassword={isValidPasswordStub}
         findUser={findUserDummy}
       >

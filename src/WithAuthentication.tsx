@@ -8,9 +8,7 @@ interface LoginPageProps {
 const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
   const [user, setUser] = useState<string>("");
   const [pass, setPass] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string | undefined>(
-    undefined
-  );
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
   return (
     <form
       data-testid="login-form"
@@ -61,13 +59,14 @@ export const WithLoginForm: FC<WithLoginFormProps> = ({
   logInFunc,
 }) => {
   const [user, setUser] = useState<User | null>(null);
-  const myLogInFunc: LoginPageProps['logInFunc'] = (user, pass) => {
-    setUser(logInFunc(user, pass));
-  };
   return user !== null ? (
     <>{children}</>
   ) : (
-    <LoginPage logInFunc={myLogInFunc} />
+    <LoginPage
+      logInFunc={(user, pass) => {
+        setUser(logInFunc(user, pass));
+      }}
+    />
   );
 };
 
@@ -76,33 +75,32 @@ export const UserContext = createContext<User>(tempUser);
 
 interface WithAuthenticationProps {
   users: User[];
-  userCreds: UserAuth[];
   isValidPassword(
     pass: string,
     { passwordSalt, passwordHash }: UserAuth
   ): boolean;
-  findUser(user: string, users: UserAuth[]): UserAuth;
+  findUser(user: string): UserAuth;
 }
 
 export const WithAuthentication: FC<WithAuthenticationProps> = ({
   users,
-  userCreds,
   isValidPassword,
   findUser,
   children,
 }) => {
   const [loggedInUser, setLoggedInUser] = useState<User>(tempUser);
   const logInFunc: LogInFunc = (user, pass) => {
-    const maybeUser = findUser(user, userCreds);
-    if (isValidPassword(pass, maybeUser)) {
-      const authUser = users.find((u: User) => u.name === maybeUser.name);
-      if (authUser === undefined) {
-        throw new Error("User not found");
-      }
-      setLoggedInUser(authUser);
-      return authUser;
+    const maybeUser = findUser(user);
+    if (!isValidPassword(pass, maybeUser)) {
+      throw new Error("Invalid user credentials");
     }
-    throw new Error("Invalid user credentials");
+
+    const authUser = users.find((u: User) => u.name === maybeUser.name);
+    if (authUser === undefined) {
+      throw new Error("User not found");
+    }
+    setLoggedInUser(authUser);
+    return authUser;
   };
 
   return (
