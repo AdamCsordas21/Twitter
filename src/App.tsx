@@ -43,7 +43,6 @@ const App: FC<AppProps> = ({ initialTweets }) => {
       <Main data-testid="main-section">
         <Header />
         <NewTweetSection addTweet={addTweetFn} />
-        {/* tweets */}
         {tweets.map((tweet, index) => (
           <Tweet key={index} {...tweet} />
         ))}
