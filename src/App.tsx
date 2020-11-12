@@ -33,7 +33,7 @@ const App: FC<AppProps> = ({ initialTweets }) => {
       {
         author: user,
         body: newTweetBody,
-        createdOn: "now",
+        createdOn: new Date().toJSON(),
       },
     ]);
 

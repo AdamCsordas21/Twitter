@@ -16,12 +16,12 @@ describe("main page", () => {
     {
       author: { name: "Adam", tag: "@AdamCsordas21" },
       body: "Hello Twitter World",
-      createdOn: "32 mins ago",
+      createdOn: "2020-11-01T18:16:23.045Z",
     },
     {
       author: { name: "Osh", tag: "@oshdev" },
       body: "Hello Adam",
-      createdOn: "32 mins ago",
+      createdOn: "2020-11-02T18:16:23.045Z",
     },
   ];
 
@@ -49,6 +49,7 @@ describe("main page", () => {
       expect(getByTestId("tweet")).toBeInTheDocument();
       expect(getByText("userName", { exact: false })).toBeInTheDocument();
       expect(getByText("@userTag", { exact: false })).toBeInTheDocument();
+      expect(getByText("1m")).toBeInTheDocument();
     });
 
     it("should not erase existing tweets when creating new one", () => {
