@@ -19,15 +19,68 @@ const TweetCreatedOn = styled.span`
 `;
 
 const FlexBox = styled.div`
-  padding-top: 0.5em;
   display: flex;
 `;
 
-const FlexItemLabel = styled.label`
+const FlexItem = styled.div`
   flex: 1 1 auto;
 `;
 
-const Tweet: FC<TweetModel> = ({ author, body, createdOn, likes }) => (
+interface TweetButton {
+  activeColour: string;
+}
+
+const Button = styled.button<TweetButton>`
+  display: inline-block;
+  border: none;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+  background: inherit;
+  font-family: inherit;
+  font-size: 0.7em;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: unset;
+
+  & > div {
+    display: inline-flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  & > span {
+    padding: 0.5em;
+  }
+
+  &:hover,
+  &:focus {
+    outline: unset;
+
+    & > span {
+      color: rgb(${(props) => props.activeColour});
+
+      &:first-child {
+        background: rgba(${(props) => props.activeColour}, 50%);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+`;
+
+const Tweet: FC<TweetModel> = ({ author, body, createdOn, likes }) => {
+
+  return (
   <article className="tweet" data-testid="tweet">
     <h3>
       {author.name} {author.tag}{" "}
@@ -35,20 +88,25 @@ const Tweet: FC<TweetModel> = ({ author, body, createdOn, likes }) => (
     </h3>
     {body}
     <FlexBox>
-      <FlexItemLabel>
+      <FlexItem>
         <FontAwesomeIcon icon={faCommentDots} />
-      </FlexItemLabel>
-      <FlexItemLabel>
+      </FlexItem>
+      <FlexItem>
         <FontAwesomeIcon icon={faRetweet} />
-      </FlexItemLabel>
-      <FlexItemLabel>
-        <FontAwesomeIcon icon={faHeart} /> {likes}
-      </FlexItemLabel>
-      <FlexItemLabel>
+      </FlexItem>
+      <FlexItem>
+        <Button activeColour="224, 36, 94" title="like">
+          <span>
+            <FontAwesomeIcon icon={faHeart} />
+          </span>
+          {likes && <span aria-label="likes">{likes}</span>}
+        </Button>
+      </FlexItem>
+      <FlexItem>
         <FontAwesomeIcon icon={faShare} />
-      </FlexItemLabel>
+      </FlexItem>
     </FlexBox>
   </article>
-);
+)};
 
 export default Tweet;
