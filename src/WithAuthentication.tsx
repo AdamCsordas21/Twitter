@@ -6,8 +6,8 @@ interface LoginPageProps {
 }
 
 const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
-  const [user, setUser] = useState<string>("");
-  const [pass, setPass] = useState<string>("");
+  const [user, setUser] = useState<string>("adam");
+  const [pass, setPass] = useState<string>("secret1");
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
   return (
     <form
@@ -28,6 +28,7 @@ const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
           placeholder="user"
           type="text"
           name="user"
+          value={user}
           onChange={(e) => setUser(e.target.value)}
         />
       </label>
@@ -37,6 +38,7 @@ const LoginPage: FC<LoginPageProps> = ({ logInFunc }) => {
           placeholder="password"
           type="password"
           name="pass"
+          value={pass}
           onChange={(e) => setPass(e.target.value)}
         />
       </label>
