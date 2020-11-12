@@ -65,7 +65,7 @@ describe("main page", () => {
       expect(getAllByTestId("tweet")).toHaveLength(dummyTweets.length + 1);
     });
   });
-
+  
   describe("tweet section", () => {
     it("should render tweets", () => {
       const { getAllByTestId } = render(

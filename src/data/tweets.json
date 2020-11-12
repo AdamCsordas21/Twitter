@@ -2,16 +2,16 @@
   {
     "author": { "name": "Adam", "tag": "@AdamCsordas21" },
     "body": "Hello World",
-    "createdOn": "1 h"
+    "createdOn": "2020-11-12T18:16:23.045Z"
   },
   {
     "author": { "name": "Osh", "tag": "@oshdev" },
     "body": "Hello Adam",
-    "createdOn": "2 h"
+    "createdOn": "2020-11-11T19:16:23.045Z"
   },
   {
     "author": { "name": "Nela", "tag": "@nelanelka1" },
     "body": "Hello Osh",
-    "createdOn": "3 h"
+    "createdOn": "2020-11-01T18:16:23.045Z"
   }
 ]
