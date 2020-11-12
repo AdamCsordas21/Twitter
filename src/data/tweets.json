@@ -2,7 +2,8 @@
   {
     "author": { "name": "Adam", "tag": "@AdamCsordas21" },
     "body": "Hello World",
-    "createdOn": "2020-11-12T18:16:23.045Z"
+    "createdOn": "2020-11-12T18:16:23.045Z",
+    "likes": 17
   },
   {
     "author": { "name": "Osh", "tag": "@oshdev" },
