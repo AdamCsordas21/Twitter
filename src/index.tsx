@@ -13,6 +13,7 @@ export interface TweetModel {
   author: Author;
   body: string;
   createdOn: string;
+  comments?: string;
   likes?: number;
 }
 

@@ -78,35 +78,46 @@ const Button = styled.button<TweetButton>`
   }
 `;
 
-const Tweet: FC<TweetModel> = ({ author, body, createdOn, likes }) => {
-
+const Tweet: FC<TweetModel> = ({
+  author,
+  body,
+  createdOn,
+  comments,
+  likes,
+}) => {
   return (
-  <article className="tweet" data-testid="tweet">
-    <h3>
-      {author.name} {author.tag}{" "}
-      <TweetCreatedOn>{formatDate(createdOn)}</TweetCreatedOn>
-    </h3>
-    {body}
-    <FlexBox>
-      <FlexItem>
-        <FontAwesomeIcon icon={faCommentDots} />
-      </FlexItem>
-      <FlexItem>
-        <FontAwesomeIcon icon={faRetweet} />
-      </FlexItem>
-      <FlexItem>
-        <Button activeColour="224, 36, 94" title="like">
-          <span>
-            <FontAwesomeIcon icon={faHeart} />
-          </span>
-          {likes && <span aria-label="likes">{likes}</span>}
-        </Button>
-      </FlexItem>
-      <FlexItem>
-        <FontAwesomeIcon icon={faShare} />
-      </FlexItem>
-    </FlexBox>
-  </article>
-)};
+    <article className="tweet" data-testid="tweet">
+      <h3>
+        {author.name} {author.tag}{" "}
+        <TweetCreatedOn>{formatDate(createdOn)}</TweetCreatedOn>
+      </h3>
+      {body}
+      <FlexBox>
+        <FlexItem>
+          <Button activeColour="136, 153, 166" title="comment">
+            <span>
+              <FontAwesomeIcon icon={faCommentDots} />
+            </span>
+            {comments && <span aria-label="comments">{comments}</span>}
+          </Button>
+        </FlexItem>
+        <FlexItem>
+          <FontAwesomeIcon icon={faRetweet} />
+        </FlexItem>
+        <FlexItem>
+          <Button activeColour="224, 36, 94" title="like">
+            <span>
+              <FontAwesomeIcon icon={faHeart} />
+            </span>
+            {likes && <span aria-label="likes">{likes}</span>}
+          </Button>
+        </FlexItem>
+        <FlexItem>
+          <FontAwesomeIcon icon={faShare} />
+        </FlexItem>
+      </FlexBox>
+    </article>
+  );
+};
 
 export default Tweet;
