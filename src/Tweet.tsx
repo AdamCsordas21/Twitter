@@ -94,7 +94,7 @@ const Tweet: FC<TweetModel> = ({
       {body}
       <FlexBox>
         <FlexItem>
-          <Button activeColour="136, 153, 166" title="comment">
+          <Button activeColour="29, 161, 242" title="comment">
             <span>
               <FontAwesomeIcon icon={faCommentDots} />
             </span>
