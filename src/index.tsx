@@ -13,10 +13,10 @@ export interface TweetModel {
   author: Author;
   body: string;
   createdOn: string;
-  comments?: string;
-  retweets?: string;
+  comments?: number;
+  retweets?: number;
   likes?: number;
-  shares?: string;
+  shares?: number;
 }
 
 export interface Author {

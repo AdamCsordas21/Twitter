@@ -6,6 +6,7 @@ import {
   faRetweet,
   faHeart,
   faShare,
+  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 import { TweetModel } from "./";
 import { formatDate } from "./date-time/date-time";
@@ -23,12 +24,8 @@ const FlexBox = styled.div`
 `;
 
 const FlexItem = styled.div`
-  flex: 1 1 auto;
+  flex: 1 1 300px;
 `;
-
-interface TweetButton {
-  activeColour: string;
-}
 
 const Button = styled.button<TweetButton>`
   display: inline-block;
@@ -45,15 +42,6 @@ const Button = styled.button<TweetButton>`
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: unset;
-
-  & > div {
-    display: inline-flex;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
 
   & > span {
     padding: 0.5em;
@@ -78,6 +66,35 @@ const Button = styled.button<TweetButton>`
   }
 `;
 
+interface FlexButtonProps {
+  activeColour: string;
+  title: string;
+  label: string;
+  icon: IconDefinition;
+  itemCount?: number;
+}
+
+const FlexButton: FC<FlexButtonProps> = ({
+  activeColour,
+  title,
+  label,
+  icon,
+  itemCount,
+}) => (
+  <FlexItem>
+    <Button activeColour={activeColour} title={title}>
+      <span>
+        <FontAwesomeIcon icon={icon} />
+      </span>
+      {itemCount && <span aria-label={label}>{itemCount}</span>}
+    </Button>
+  </FlexItem>
+);
+
+interface TweetButton {
+  activeColour: string;
+}
+
 const Tweet: FC<TweetModel> = ({
   author,
   body,
@@ -86,50 +103,44 @@ const Tweet: FC<TweetModel> = ({
   retweets,
   likes,
   shares,
-}) => {
-  return (
-    <article className="tweet" data-testid="tweet">
-      <h3>
-        {author.name} {author.tag}{" "}
-        <TweetCreatedOn>{formatDate(createdOn)}</TweetCreatedOn>
-      </h3>
-      {body}
-      <FlexBox>
-        <FlexItem>
-          <Button activeColour="29, 161, 242" title="comment">
-            <span>
-              <FontAwesomeIcon icon={faCommentDots} />
-            </span>
-            {comments && <span aria-label="comments">{comments}</span>}
-          </Button>
-        </FlexItem>
-        <FlexItem>
-          <Button activeColour="23, 191, 99" title="retweet">
-            <span>
-              <FontAwesomeIcon icon={faRetweet} />
-            </span>
-            {retweets && <span aria-label="retweets">{retweets}</span>}
-          </Button>
-        </FlexItem>
-        <FlexItem>
-          <Button activeColour="224, 36, 94" title="like">
-            <span>
-              <FontAwesomeIcon icon={faHeart} />
-            </span>
-            {likes && <span aria-label="likes">{likes}</span>}
-          </Button>
-        </FlexItem>
-        <FlexItem>
-          <Button activeColour="29, 161, 242" title="share">
-            <span>
-              <FontAwesomeIcon icon={faShare} />
-            </span>
-            {shares && <span aria-label="shares">{shares}</span>}
-          </Button>
-        </FlexItem>
-      </FlexBox>
-    </article>
-  );
-};
+}) => (
+  <article className="tweet" data-testid="tweet">
+    <h3>
+      {author.name} {author.tag}{" "}
+      <TweetCreatedOn>{formatDate(createdOn)}</TweetCreatedOn>
+    </h3>
+    {body}
+    <FlexBox>
+      <FlexButton
+        activeColour="29, 161, 242"
+        title="comment"
+        label="comments"
+        icon={faCommentDots}
+        itemCount={comments}
+      />
+      <FlexButton
+        activeColour="23, 191, 99"
+        title="retweet"
+        label="retweets"
+        icon={faRetweet}
+        itemCount={retweets}
+      />
+      <FlexButton
+        activeColour="224, 36, 94"
+        title="like"
+        label="likes"
+        icon={faHeart}
+        itemCount={likes}
+      />
+      <FlexButton
+        activeColour="29, 161, 242"
+        title="share"
+        label="shares"
+        icon={faShare}
+        itemCount={shares}
+      />
+    </FlexBox>
+  </article>
+);
 
 export default Tweet;

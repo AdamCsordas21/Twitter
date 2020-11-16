@@ -37,6 +37,7 @@ const NewTweetIconsButton = styled.button`
   background: inherit;
   cursor: pointer;
   color: rgb(29, 161, 242);
+  margin-right: 0.5em;
 `;
 
 export type AddTweetFn = (body: string) => void;
@@ -64,22 +65,22 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
       <h5>
         <NewTweetIconsButton>
           <span>
-            <FontAwesomeIcon icon={faImage} />{" "}
+            <FontAwesomeIcon icon={faImage} />
           </span>
         </NewTweetIconsButton>
         <NewTweetIconsButton>
           <span>
-            <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
+            <FontAwesomeIcon icon={faGrinSquintTears} />
           </span>
         </NewTweetIconsButton>
         <NewTweetIconsButton>
           <span>
-            <FontAwesomeIcon icon={faPollH} />{" "}
+            <FontAwesomeIcon icon={faPollH} />
           </span>
         </NewTweetIconsButton>
         <NewTweetIconsButton>
           <span>
-            <FontAwesomeIcon icon={faSmile} />{" "}
+            <FontAwesomeIcon icon={faSmile} />
           </span>
         </NewTweetIconsButton >
         <NewTweetIconsButton>
