@@ -1,6 +1,6 @@
 describe("home page", () => {
   const login = () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
     cy.get("[placeholder=user]").clear().type("osh");
     cy.get("[placeholder=password]").clear().type("secret2");
     cy.contains("log in").click();

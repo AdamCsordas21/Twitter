@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:all": "yarn tsc && CI=true yarn test && yarn cypress run && yarn react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
