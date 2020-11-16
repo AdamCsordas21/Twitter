@@ -31,6 +31,14 @@ const NewTweetButton = styled.button`
   background-color: rgb(29, 161, 242);
 `;
 
+const NewTweetIconsButton = styled.button`
+  font-size: 1em;
+  border: none;
+  background: inherit;
+  cursor: pointer;
+  color: rgb(29, 161, 242);
+`;
+
 export type AddTweetFn = (body: string) => void;
 export interface NewTweetSectionProps {
   addTweet: AddTweetFn;
@@ -54,10 +62,31 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
         Tweet
       </NewTweetButton>
       <h5>
-        <FontAwesomeIcon icon={faImage} />{" "}
-        <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
-        <FontAwesomeIcon icon={faPollH} /> <FontAwesomeIcon icon={faSmile} />{" "}
-        <FontAwesomeIcon icon={faCalendarAlt} />
+        <NewTweetIconsButton>
+          <span>
+            <FontAwesomeIcon icon={faImage} />{" "}
+          </span>
+        </NewTweetIconsButton>
+        <NewTweetIconsButton>
+          <span>
+            <FontAwesomeIcon icon={faGrinSquintTears} />{" "}
+          </span>
+        </NewTweetIconsButton>
+        <NewTweetIconsButton>
+          <span>
+            <FontAwesomeIcon icon={faPollH} />{" "}
+          </span>
+        </NewTweetIconsButton>
+        <NewTweetIconsButton>
+          <span>
+            <FontAwesomeIcon icon={faSmile} />{" "}
+          </span>
+        </NewTweetIconsButton >
+        <NewTweetIconsButton>
+          <span>
+            <FontAwesomeIcon icon={faCalendarAlt} />
+          </span>
+        </NewTweetIconsButton>
       </h5>
     </header>
   );
