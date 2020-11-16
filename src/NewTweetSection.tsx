@@ -1,6 +1,5 @@
 import React from 'react'
 import { FC, useState } from "react";
-import userImg from "./images/UserImg.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import {
@@ -41,9 +40,6 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
   const [newTweetBody, changeTweetBody] = useState<string>("");
   return (
     <header>
-      <div>
-        <img src={userImg} alt="User Profile Img" />
-      </div>
       <NewTweetInput
         placeholder="What's happening?"
         onChange={(event) => changeTweetBody(event.target.value)}
