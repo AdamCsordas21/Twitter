@@ -11,20 +11,19 @@ import { UserContext } from "./WithAuthentication";
 const FlexBox = styled.div`
   display: flex;
   justify-content: center;
-
-`
+`;
 
 const Main = styled.main`
   flex: 1 1 600px;
   max-width: 800px;
-`
+`;
 
 interface AppProps {
   initialTweets: TweetModel[];
 }
 
 const App: FC<AppProps> = ({ initialTweets }) => {
-  const user = useContext<User>(UserContext)
+  const user = useContext<User>(UserContext);
 
   const [tweets, setTweets] = useState<TweetModel[]>(initialTweets);
   const addTweetFn: AddTweetFn = (newTweetBody: string) =>

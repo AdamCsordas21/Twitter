@@ -66,12 +66,10 @@ describe("main page", () => {
       expect(getAllByTestId("tweet")).toHaveLength(dummyTweets.length + 1);
     });
   });
-  
+
   describe("tweet section", () => {
     it("should render tweets", () => {
-      const { getAllByTestId } = render(
-        <App initialTweets={dummyTweets} />
-      );
+      const { getAllByTestId } = render(<App initialTweets={dummyTweets} />);
       expect(getAllByTestId("tweet")).toHaveLength(2);
     });
   });

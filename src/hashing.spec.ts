@@ -1,5 +1,5 @@
-import { UserAuth } from "."
-import { FAKE_USER, findUser, hash, isValid } from "./hashing"
+import { UserAuth } from ".";
+import { FAKE_USER, findUser, hash, isValid } from "./hashing";
 
 describe('hashing', () => {
   it('hashes password with random salt for user to register', () => {

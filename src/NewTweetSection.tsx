@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { FC, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
@@ -31,9 +31,9 @@ const NewTweetButton = styled.button`
   background-color: lightblue;
 `;
 
-export type AddTweetFn = (body: string) => void
+export type AddTweetFn = (body: string) => void;
 export interface NewTweetSectionProps {
-  addTweet: AddTweetFn
+  addTweet: AddTweetFn;
 }
 
 const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
@@ -47,8 +47,8 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
       />
       <NewTweetButton
         onClick={() => {
-          addTweet(newTweetBody)
-          changeTweetBody('')
+          addTweet(newTweetBody);
+          changeTweetBody("");
         }}
       >
         Tweet
@@ -60,7 +60,7 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
         <FontAwesomeIcon icon={faCalendarAlt} />
       </h5>
     </header>
-  )
-}
+  );
+};
 
-export default NewTweetSection
+export default NewTweetSection;

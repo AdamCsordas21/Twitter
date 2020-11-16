@@ -15,7 +15,7 @@ import styled from "styled-components";
 
 const Nav = styled.nav`
   flex: 0 0 200px;
-`
+`;
 
 const Ol = styled.ol`
   list-style-type: none;
@@ -25,7 +25,7 @@ const Ol = styled.ol`
   & > li {
     position: relative;
   }
-`
+`;
 
 const SideNav: FC = () => (
   <Nav>

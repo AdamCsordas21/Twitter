@@ -1,5 +1,5 @@
-import crypto from 'crypto'
-import { SHA256 } from "crypto-js"
+import crypto from 'crypto';
+import { SHA256 } from "crypto-js";
 import { UserAuth } from '.';
 
 export const FAKE_USER: UserAuth = {
