@@ -14,6 +14,7 @@ export interface TweetModel {
   body: string;
   createdOn: string;
   comments?: string;
+  retweets?: string;
   likes?: number;
 }
 
