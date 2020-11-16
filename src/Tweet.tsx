@@ -108,7 +108,7 @@ const Tweet: FC<TweetModel> = ({
             <span>
               <FontAwesomeIcon icon={faRetweet} />
             </span>
-            {retweets && <span aria-label="comments">{retweets}</span>}
+            {retweets && <span aria-label="retweets">{retweets}</span>}
           </Button>
         </FlexItem>
         <FlexItem>
@@ -124,7 +124,7 @@ const Tweet: FC<TweetModel> = ({
             <span>
               <FontAwesomeIcon icon={faShare} />
             </span>
-            {shares && <span aria-label="likes">{shares}</span>}
+            {shares && <span aria-label="shares">{shares}</span>}
           </Button>
         </FlexItem>
       </FlexBox>
