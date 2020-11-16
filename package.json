@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:all": "yarn tsc && CI=true yarn test && yarn cypress run && yarn react-scripts build",
+    "build:all": "yarn tsc && CI=true yarn test && yarn react-scripts build && scripts/cypress.sh ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -48,6 +48,7 @@
     "@types/styled-components": "^5.1.4",
     "babel-plugin-styled-components": "^1.11.1",
     "cypress": "^5.6.0",
+    "serve": "^11.3.2",
     "typescript": "~3.7.2"
   }
 }
