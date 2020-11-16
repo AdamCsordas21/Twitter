@@ -28,7 +28,7 @@ const NewTweetButton = styled.button`
   border-radius: 0.5em;
   border: none;
   color: white;
-  background-color: lightblue;
+  background-color: rgb(29, 161, 242);
 `;
 
 export type AddTweetFn = (body: string) => void;
