@@ -85,6 +85,7 @@ const Tweet: FC<TweetModel> = ({
   comments,
   retweets,
   likes,
+  shares,
 }) => {
   return (
     <article className="tweet" data-testid="tweet">
@@ -105,7 +106,7 @@ const Tweet: FC<TweetModel> = ({
         <FlexItem>
           <Button activeColour="23, 191, 99" title="retweet">
             <span>
-          <FontAwesomeIcon icon={faRetweet} />
+              <FontAwesomeIcon icon={faRetweet} />
             </span>
             {retweets && <span aria-label="comments">{retweets}</span>}
           </Button>
@@ -119,7 +120,12 @@ const Tweet: FC<TweetModel> = ({
           </Button>
         </FlexItem>
         <FlexItem>
-          <FontAwesomeIcon icon={faShare} />
+          <Button activeColour="29, 161, 242" title="share">
+            <span>
+              <FontAwesomeIcon icon={faShare} />
+            </span>
+            {shares && <span aria-label="likes">{shares}</span>}
+          </Button>
         </FlexItem>
       </FlexBox>
     </article>
