@@ -9,27 +9,25 @@ import {
   faClipboardList,
   faUser,
   faEllipsisH,
+  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  flex: 0 0 250px;
-  cursor: pointer;
+  flex: 0 0 200px;
 `;
 
 const Ol = styled.ol`
   list-style-type: none;
   margin: 0;
   padding: 0.5em 0;
-  color: inherit;
-  background: inherit;
-  font-family: inherit;
-  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 700;
 
   & > li {
     position: relative;
-    padding: 0.6em 0;
+    padding: 0.8em 0;
   }
 
   & > li > span:hover,
@@ -40,64 +38,63 @@ const Ol = styled.ol`
   }
 
   & > li > span {
-    padding: 0.3em;
-    padding-right: 0.6em;
-  }
+    padding: 0.4em;
 
-  & > li:first-of-type > span {
-    padding-right: 0.3em;
-    color: white;
+    & > span {
+      padding: 0 0.8rem;
+    }
   }
 `;
 
+const TwitterHomeLogoStyled = styled.div`
+  padding: 0.5em 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  & > span {
+    padding: 0.4em;
+  }
+
+  & > span:hover,
+  & > span:focus {
+    background: rgba(29, 161, 242, 30%);
+    border-radius: 50vh;
+  }
+`;
+
+const TwitterHomeLogo = () => (
+  <TwitterHomeLogoStyled>
+    <span>
+      <FontAwesomeIcon icon={faTwitter} fixedWidth />
+    </span>
+  </TwitterHomeLogoStyled>
+);
+
+interface NavItemProps {
+  icon: IconDefinition;
+  text: string;
+}
+
+const NavItem: FC<NavItemProps> = ({ icon, text }) => (
+  <li>
+    <span>
+      <FontAwesomeIcon icon={icon} fixedWidth /> <span>{text}</span>
+    </span>
+  </li>
+);
+
 const SideNav: FC = () => (
   <Nav>
+    <TwitterHomeLogo />
     <Ol>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faTwitter} fixedWidth />
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faHome} fixedWidth /> Home
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faHashtag} fixedWidth /> Explore
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faBell} fixedWidth /> Notification
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faEnvelope} fixedWidth /> Messages
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faBookmark} fixedWidth /> Bookmarks
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faClipboardList} fixedWidth /> Lists
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faUser} fixedWidth /> Profile
-        </span>
-      </li>
-      <li>
-        <span>
-          <FontAwesomeIcon icon={faEllipsisH} fixedWidth /> More
-        </span>
-      </li>
+      <NavItem icon={faHome} text="Home" />
+      <NavItem icon={faHashtag} text="Explore" />
+      <NavItem icon={faBell} text="Notification" />
+      <NavItem icon={faEnvelope} text="Messages" />
+      <NavItem icon={faBookmark} text="Bookmarks" />
+      <NavItem icon={faClipboardList} text="Lists" />
+      <NavItem icon={faUser} text="Profile" />
+      <NavItem icon={faEllipsisH} text="More" />
     </Ol>
   </Nav>
 );

@@ -14,8 +14,7 @@ const FlexBox = styled.div`
 `;
 
 const Main = styled.main`
-  flex: 1 1 600px;
-  max-width: 800px;
+  flex: 0 1 600px;
 `;
 
 interface AppProps {
