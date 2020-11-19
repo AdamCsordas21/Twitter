@@ -26,10 +26,10 @@ const Ol = styled.ol`
   background: inherit;
   font-family: inherit;
   cursor: pointer;
-  
+
   & > li {
     position: relative;
-    padding: 0.5em;
+    padding: 0.6em 0;
   }
 
   & > li > span:hover,
@@ -38,24 +38,66 @@ const Ol = styled.ol`
     background: rgba(29, 161, 242, 30%);
     border-radius: 50vh;
   }
-  
+
   & > li > span {
-    padding: 0.5em;
+    padding: 0.3em;
+    padding-right: 0.6em;
+  }
+
+  & > li:first-of-type > span {
+    padding-right: 0.3em;
+    color: white;
   }
 `;
 
 const SideNav: FC = () => (
   <Nav>
-    <FontAwesomeIcon icon={faTwitter} fixedWidth />
     <Ol>
-        <li><span><FontAwesomeIcon icon={faHome} fixedWidth /> Home</span></li>
-        <li><span><FontAwesomeIcon icon={faHashtag} fixedWidth /> Explore</span></li>
-        <li><span><FontAwesomeIcon icon={faBell} fixedWidth /> Notification</span></li>
-        <li><span><FontAwesomeIcon icon={faEnvelope} fixedWidth /> Messages</span></li>
-        <li><span><FontAwesomeIcon icon={faBookmark} fixedWidth /> Bookmarks</span></li>
-        <li><span><FontAwesomeIcon icon={faClipboardList} fixedWidth /> Lists</span></li>
-        <li><span><FontAwesomeIcon icon={faUser} fixedWidth /> Profile</span></li>
-        <li><span><FontAwesomeIcon icon={faEllipsisH} fixedWidth /> More</span></li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faTwitter} fixedWidth />
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faHome} fixedWidth /> Home
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faHashtag} fixedWidth /> Explore
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faBell} fixedWidth /> Notification
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faEnvelope} fixedWidth /> Messages
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faBookmark} fixedWidth /> Bookmarks
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faClipboardList} fixedWidth /> Lists
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faUser} fixedWidth /> Profile
+        </span>
+      </li>
+      <li>
+        <span>
+          <FontAwesomeIcon icon={faEllipsisH} fixedWidth /> More
+        </span>
+      </li>
     </Ol>
   </Nav>
 );
