@@ -33,7 +33,7 @@ const Ol = styled.ol`
   & > li > span:hover,
   & > li > span:focus {
     color: rgb(29, 161, 242);
-    background: rgba(29, 161, 242, 30%);
+    background: rgba(29, 161, 242, 10%);
     border-radius: 50vh;
   }
 
@@ -57,7 +57,7 @@ const TwitterHomeLogoStyled = styled.div`
 
   & > span:hover,
   & > span:focus {
-    background: rgba(29, 161, 242, 30%);
+    background: rgba(29, 161, 242, 10%);
     border-radius: 50vh;
   }
 `;

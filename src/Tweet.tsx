@@ -55,7 +55,7 @@ const Button = styled.button<TweetButton>`
       color: rgb(${(props) => props.activeColour});
 
       &:first-child {
-        background: rgba(${(props) => props.activeColour}, 50%);
+        background: rgba(${(props) => props.activeColour}, 10%);
         border-radius: 50%;
       }
     }
