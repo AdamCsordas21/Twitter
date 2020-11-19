@@ -14,16 +14,33 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  flex: 0 0 200px;
+  flex: 0 0 250px;
+  cursor: pointer;
 `;
 
 const Ol = styled.ol`
   list-style-type: none;
   margin: 0;
   padding: 0.5em 0;
-
+  color: inherit;
+  background: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  
   & > li {
     position: relative;
+    padding: 0.5em;
+  }
+
+  & > li > span:hover,
+  & > li > span:focus {
+    color: rgb(29, 161, 242);
+    background: rgba(29, 161, 242, 30%);
+    border-radius: 50vh;
+  }
+  
+  & > li > span {
+    padding: 0.5em;
   }
 `;
 
@@ -31,14 +48,14 @@ const SideNav: FC = () => (
   <Nav>
     <FontAwesomeIcon icon={faTwitter} fixedWidth />
     <Ol>
-        <li><FontAwesomeIcon icon={faHome} fixedWidth /> Home</li>
-        <li><FontAwesomeIcon icon={faHashtag} fixedWidth /> Explore</li>
-        <li><FontAwesomeIcon icon={faBell} fixedWidth /> Notification</li>
-        <li><FontAwesomeIcon icon={faEnvelope} fixedWidth /> Messages</li>
-        <li><FontAwesomeIcon icon={faBookmark} fixedWidth /> Bookmarks</li>
-        <li><FontAwesomeIcon icon={faClipboardList} fixedWidth /> Lists</li>
-        <li><FontAwesomeIcon icon={faUser} fixedWidth /> Profile</li>
-        <li><FontAwesomeIcon icon={faEllipsisH} fixedWidth /> More</li>
+        <li><span><FontAwesomeIcon icon={faHome} fixedWidth /> Home</span></li>
+        <li><span><FontAwesomeIcon icon={faHashtag} fixedWidth /> Explore</span></li>
+        <li><span><FontAwesomeIcon icon={faBell} fixedWidth /> Notification</span></li>
+        <li><span><FontAwesomeIcon icon={faEnvelope} fixedWidth /> Messages</span></li>
+        <li><span><FontAwesomeIcon icon={faBookmark} fixedWidth /> Bookmarks</span></li>
+        <li><span><FontAwesomeIcon icon={faClipboardList} fixedWidth /> Lists</span></li>
+        <li><span><FontAwesomeIcon icon={faUser} fixedWidth /> Profile</span></li>
+        <li><span><FontAwesomeIcon icon={faEllipsisH} fixedWidth /> More</span></li>
     </Ol>
   </Nav>
 );
