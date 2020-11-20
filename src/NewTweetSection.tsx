@@ -15,11 +15,12 @@ const NewTweetInput = styled.textarea`
   font-size: inherit;
   width: 100%;
   background: inherit;
+  border: 1px solid rgb(62, 69, 77);
   border-radius: 2px;
   color: white;
 
   &::placeholder {
-    color: grey;
+    color: rgb(62, 69, 77);
   }
 `;
 
