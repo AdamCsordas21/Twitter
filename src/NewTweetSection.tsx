@@ -1,7 +1,7 @@
 import React from "react";
 import { FC, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   faImage,
   faPollH,
@@ -18,14 +18,25 @@ const Spacer = styled.div`
   flex: 1 1 auto;
 `;
 
-const NewTweetInput = styled.textarea`
+const NewTweetInput = styled.textarea<{ value: string }>`
   font-family: inherit;
   font-size: inherit;
   width: 100%;
   background: inherit;
-  border: 1px solid rgb(62, 69, 77);
-  border-radius: 2px;
   color: white;
+  resize: vertical;
+  outline: none;
+
+  border: 1px solid
+    ${({ value }) => (!!value ? "rgb(62, 69, 77)" : "transparent")};
+  border-radius: 2px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: 1px solid rgb(62, 69, 77);
+    border-radius: 2px;
+  }
 
   &::placeholder {
     color: rgb(62, 69, 77);
