@@ -1,7 +1,7 @@
 import React from "react";
 import { FC, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import {
   faImage,
   faPollH,
@@ -135,7 +135,9 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
           </span>
         </NewTweetIconsButton>
         <Spacer />
+        {/* {JSON.stringify(newTweetBody.length === 0)} */}
         <NewTweetButton
+          disabled={newTweetBody.length === 0}
           onClick={() => {
             addTweet(newTweetBody);
             changeTweetBody("");
