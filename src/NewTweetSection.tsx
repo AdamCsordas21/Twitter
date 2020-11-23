@@ -10,6 +10,14 @@ import {
   faGrinSquintTears,
 } from "@fortawesome/free-solid-svg-icons";
 
+const NewTweetButtons = styled.div`
+  display: flex;
+`;
+
+const Spacer = styled.div`
+  flex: 1 1 auto;
+`;
+
 const NewTweetInput = styled.textarea`
   font-family: inherit;
   font-size: inherit;
@@ -25,20 +33,54 @@ const NewTweetInput = styled.textarea`
 `;
 
 const NewTweetButton = styled.button`
-  height: 2.5em;
-  border-radius: 0.5em;
+  border-radius: 50vh;
   border: none;
+  outline-style: none;
   color: white;
   background-color: rgb(29, 161, 242);
+  flex: 0 1 100px;
+  min-width: 80px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.7rem;
 `;
 
 const NewTweetIconsButton = styled.button`
-  font-size: 1em;
+  display: inline-block;
   border: none;
-  background: inherit;
-  cursor: pointer;
+  margin: 0;
+  text-decoration: none;
   color: rgb(29, 161, 242);
-  margin-right: 0.5em;
+  background: inherit;
+  font-family: inherit;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: unset;
+
+  & > span {
+    padding: 0.5em;
+  }
+
+  &:hover,
+  &:focus {
+    outline: unset;
+
+    & > span {
+      color: rgb(29, 161, 242);
+
+      &:first-child {
+        background: rgba(29, 161, 242, 10%);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 export type AddTweetFn = (body: string) => void;
@@ -55,15 +97,7 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
         onChange={(event) => changeTweetBody(event.target.value)}
         value={newTweetBody}
       />
-      <NewTweetButton
-        onClick={() => {
-          addTweet(newTweetBody);
-          changeTweetBody("");
-        }}
-      >
-        Tweet
-      </NewTweetButton>
-      <h5>
+      <NewTweetButtons>
         <NewTweetIconsButton>
           <span>
             <FontAwesomeIcon icon={faImage} />
@@ -83,13 +117,22 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
           <span>
             <FontAwesomeIcon icon={faSmile} />
           </span>
-        </NewTweetIconsButton >
+        </NewTweetIconsButton>
         <NewTweetIconsButton>
           <span>
             <FontAwesomeIcon icon={faCalendarAlt} />
           </span>
         </NewTweetIconsButton>
-      </h5>
+        <Spacer />
+        <NewTweetButton
+          onClick={() => {
+            addTweet(newTweetBody);
+            changeTweetBody("");
+          }}
+        >
+          Tweet
+        </NewTweetButton>
+      </NewTweetButtons>
     </header>
   );
 };

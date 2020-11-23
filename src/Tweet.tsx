@@ -36,7 +36,6 @@ const Button = styled.button<TweetButton>`
   background: inherit;
   font-family: inherit;
   font-size: 0.7em;
-  cursor: pointer;
   text-align: center;
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
