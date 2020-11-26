@@ -44,7 +44,7 @@ describe("main page", () => {
         getByPlaceholderText("What's happening?"),
         "new tweet body"
       );
-      userEvent.click(getByText("Tweet"));
+      userEvent.click(getByTestId("create-new-tweet-button"));
 
       expect(getByTestId("tweet")).toBeInTheDocument();
       expect(getByText("userName", { exact: false })).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe("main page", () => {
     });
 
     it("should not erase existing tweets when creating new one", () => {
-      const { getByText, getByPlaceholderText, getAllByTestId } = render(
+      const { getByTestId, getByPlaceholderText, getAllByTestId } = render(
         <App initialTweets={dummyTweets} />
       );
 
@@ -61,7 +61,7 @@ describe("main page", () => {
         getByPlaceholderText("What's happening?"),
         "new tweet body"
       );
-      userEvent.click(getByText("Tweet"));
+      userEvent.click(getByTestId("create-new-tweet-button"));
 
       expect(getAllByTestId("tweet")).toHaveLength(dummyTweets.length + 1);
     });

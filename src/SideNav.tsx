@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -83,20 +83,37 @@ const NavItem: FC<NavItemProps> = ({ icon, text }) => (
   </li>
 );
 
+const SideNavTweetButton = styled.button`
+  border-radius: 50vh;
+  border: none;
+  outline-style: none;
+  color: white;
+  background-color: rgb(29, 161, 242);
+  min-height: 49px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  flex: 0 1 100px;
+  min-width: 180px;
+  text-align: center;
+`;
+
 const SideNav: FC = () => (
-  <Nav>
-    <TwitterHomeLogo />
-    <Ol>
-      <NavItem icon={faHome} text="Home" />
-      <NavItem icon={faHashtag} text="Explore" />
-      <NavItem icon={faBell} text="Notification" />
-      <NavItem icon={faEnvelope} text="Messages" />
-      <NavItem icon={faBookmark} text="Bookmarks" />
-      <NavItem icon={faClipboardList} text="Lists" />
-      <NavItem icon={faUser} text="Profile" />
-      <NavItem icon={faEllipsisH} text="More" />
-    </Ol>
-  </Nav>
-);
+    <Nav>
+      <TwitterHomeLogo />
+      <Ol>
+        <NavItem icon={faHome} text="Home" />
+        <NavItem icon={faHashtag} text="Explore" />
+        <NavItem icon={faBell} text="Notification" />
+        <NavItem icon={faEnvelope} text="Messages" />
+        <NavItem icon={faBookmark} text="Bookmarks" />
+        <NavItem icon={faClipboardList} text="Lists" />
+        <NavItem icon={faUser} text="Profile" />
+        <NavItem icon={faEllipsisH} text="More" />
+      </Ol>
+      <SideNavTweetButton>Tweet</SideNavTweetButton>
+    </Nav>
+  );
 
 export default SideNav;

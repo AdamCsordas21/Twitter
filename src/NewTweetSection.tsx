@@ -137,6 +137,7 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
         <Spacer />
         {/* {JSON.stringify(newTweetBody.length === 0)} */}
         <NewTweetButton
+          data-testid="create-new-tweet-button"
           disabled={newTweetBody.length === 0}
           onClick={() => {
             addTweet(newTweetBody);
