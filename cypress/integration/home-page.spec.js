@@ -14,8 +14,10 @@ describe("home page", () => {
   it("lets user create a tweet", () => {
     login();
     const tweetBody = "such tweet, very contents, wow";
-    cy.get('[placeholder="What\'s happening?"]').type(tweetBody);
-    cy.contains("Tweet").click();
+    cy.get('[data-testid="new-tweet-section"]').within(() => {
+      cy.get('[placeholder="What\'s happening?"]').type(tweetBody);
+      cy.get('[data-testid="create-new-tweet-button"]').click();
+    })
     cy.get("[data-testid=tweet]").within(() => cy.contains(tweetBody));
   });
 });

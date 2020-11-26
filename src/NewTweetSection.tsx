@@ -54,6 +54,10 @@ const NewTweetButton = styled.button`
   font-size: 1rem;
   font-weight: 700;
   padding: 0.7rem;
+
+  &:disabled {
+    opacity: 50%;
+  }
 `;
 
 const NewTweetIconsButton = styled.button`
@@ -102,9 +106,8 @@ export interface NewTweetSectionProps {
 const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
   const [newTweetBody, changeTweetBody] = useState<string>("");
   return (
-    <header>
+    <header data-testid="new-tweet-section">
       <NewTweetInput
-      data-testid="osh"
         placeholder="What's happening?"
         onChange={(event) => changeTweetBody(event.target.value)}
         value={newTweetBody}
