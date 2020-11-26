@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,8 +6,8 @@ import {
   faRetweet,
   faHeart,
   faShare,
-  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { TweetModel } from "./";
 import { formatDate } from "./date-time/date-time";
 
@@ -73,22 +73,30 @@ interface FlexButtonProps {
   itemCount?: number;
 }
 
-const FlexButton: FC<FlexButtonProps> = ({
+export const FlexButton: FC<FlexButtonProps> = ({
   activeColour,
   title,
   label,
   icon,
   itemCount,
-}) => (
-  <FlexItem>
-    <Button activeColour={activeColour} title={title}>
-      <span>
-        <FontAwesomeIcon icon={icon} />
-      </span>
-      {itemCount && <span aria-label={label}>{itemCount}</span>}
-    </Button>
-  </FlexItem>
-);
+}) => {
+  const [count, setCount] = useState<number>(itemCount ?? 0)
+  return (
+    <FlexItem>
+      <Button
+        data-testid={`${title}-button`}
+        activeColour={activeColour}
+        title={title}
+        onClick={() => setCount(count + 1)}
+      >
+        <span>
+          <FontAwesomeIcon icon={icon} />
+        </span>
+        {count && <span aria-label={label}>{count}</span>}
+      </Button>
+    </FlexItem>
+  );
+};
 
 interface TweetButton {
   activeColour: string;

@@ -1,7 +1,8 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { Author } from "./";
-import Tweet from "./Tweet";
+import Tweet, { FlexButton } from "./Tweet";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 describe("tweets", () => {
   it("should render tweets", () => {
@@ -34,4 +35,24 @@ describe("tweets", () => {
 
   //   expect(getByText("1")).toBeInTheDocument();
   // });
+});
+
+describe("Tweet interaction button", () => {
+  it("increases count by one when clicked", () => {
+    const count = 4;
+    const icon = (jest.fn() as unknown) as jest.Mocked<IconDefinition>;
+    const { getByTestId, getByText } = render(
+      <FlexButton
+        activeColour="colour"
+        title="action"
+        label="label"
+        icon={icon}
+        itemCount={count}
+      />
+    );
+
+    getByTestId("action-button").click();
+
+    expect(getByText("5")).toBeInTheDocument();
+  });
 });
