@@ -31,17 +31,16 @@ describe("new tweet section", () => {
     expect(addTweetSpy).toBeCalledWith(body);
   });
 
-  // it("should enable the tweet button if the new tweet input is populated", () => {
-  //   const addTweetSpy = jest.fn();
-  //   const { getByText, getByPlaceholderText } = render(
-  //     <NewTweetSection addTweet={addTweetSpy} />
-  //   );
+  it("should enable the tweet button if the new tweet input is populated", () => {
+    const addTweetSpy = jest.fn();
+    const { getByText, getByPlaceholderText } = render(
+      <NewTweetSection addTweet={addTweetSpy} />
+    );
 
-  //   userEvent.type(getByPlaceholderText("What's happening?"), "foo");
-  //   userEvent.click(getByText("Tweet"));
+    userEvent.type(getByPlaceholderText("What's happening?"), "foo");
 
-  //   expect(getByText("Tweet")).not.toBeDisabled();
-  // });
+    expect(getByText("Tweet")).not.toBeDisabled();
+  });
 
   it("should disable the tweet button if the new tweet input is empty", () => {
     const addTweetSpy = jest.fn();

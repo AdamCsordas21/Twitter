@@ -104,6 +104,7 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
   return (
     <header>
       <NewTweetInput
+      data-testid="osh"
         placeholder="What's happening?"
         onChange={(event) => changeTweetBody(event.target.value)}
         value={newTweetBody}
@@ -135,7 +136,6 @@ const NewTweetSection: FC<NewTweetSectionProps> = ({ addTweet }) => {
           </span>
         </NewTweetIconsButton>
         <Spacer />
-        {/* {JSON.stringify(newTweetBody.length === 0)} */}
         <NewTweetButton
           data-testid="create-new-tweet-button"
           disabled={newTweetBody.length === 0}
