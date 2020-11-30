@@ -3,16 +3,19 @@
     "author": { "name": "Adam", "tag": "@AdamCsordas21" },
     "body": "Hello World",
     "createdOn": "2020-11-12T18:16:23.045Z",
-    "likes": 17
+    "likes": 17,
+    "shares": [{ "name": "adam", "tag": "@adam" }]
   },
   {
     "author": { "name": "Osh", "tag": "@oshdev" },
     "body": "Hello Adam",
-    "createdOn": "2020-11-11T19:16:23.045Z"
+    "createdOn": "2020-11-11T19:16:23.045Z",
+    "shares": []
   },
   {
     "author": { "name": "Nela", "tag": "@nelanelka1" },
     "body": "Hello Osh",
-    "createdOn": "2020-11-01T18:16:23.045Z"
+    "createdOn": "2020-11-01T18:16:23.045Z",
+    "shares": []
   }
 ]
