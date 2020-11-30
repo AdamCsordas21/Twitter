@@ -17,11 +17,13 @@ describe("main page", () => {
       author: { name: "Adam", tag: "@AdamCsordas21" },
       body: "Hello Twitter World",
       createdOn: "2020-11-01T18:16:23.045Z",
+      "shares": []
     },
     {
       author: { name: "Osh", tag: "@oshdev" },
       body: "Hello Adam",
       createdOn: "2020-11-02T18:16:23.045Z",
+      "shares": []
     },
   ];
 

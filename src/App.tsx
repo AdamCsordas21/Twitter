@@ -32,6 +32,7 @@ const App: FC<AppProps> = ({ initialTweets }) => {
         author: user,
         body: newTweetBody,
         createdOn: new Date().toJSON(),
+        shares: [],
       },
     ]);
 
