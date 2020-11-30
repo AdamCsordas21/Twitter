@@ -16,7 +16,7 @@ export interface TweetModel {
   comments?: number;
   retweets?: number;
   likes?: number;
-  shares?: number;
+  shares: User[];
 }
 
 export interface Author {
