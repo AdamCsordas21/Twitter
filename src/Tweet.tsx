@@ -65,34 +65,41 @@ const Button = styled.button<TweetButton>`
   }
 `;
 
-interface FlexButtonProps {
+interface InteractionButtonProps {
   activeColour: string;
   title: string;
   label: string;
   icon: IconDefinition;
   itemCount?: number;
+  countIncludesMe?: boolean;
 }
 
-export const FlexButton: FC<FlexButtonProps> = ({
+export const InteractionButton: FC<InteractionButtonProps> = ({
   activeColour,
   title,
   label,
   icon,
   itemCount,
+  countIncludesMe,
 }) => {
-  const [count, setCount] = useState<number>(itemCount ?? 0)
+  const [clicked, setClicked] = useState<boolean>(false);
+  let count = itemCount ?? 0
+  if (clicked) countIncludesMe ? count-- : count++
+ 
   return (
     <FlexItem>
       <Button
         data-testid={`${title}-button`}
         activeColour={activeColour}
         title={title}
-        onClick={() => setCount(count + 1)}
+        onClick={() => {
+          setClicked(!clicked);
+        }}
       >
         <span>
           <FontAwesomeIcon icon={icon} />
         </span>
-        {count && <span aria-label={label}>{count}</span>}
+        {count === 0 ? undefined : <span aria-label={label}>{count}</span>}
       </Button>
     </FlexItem>
   );
@@ -118,33 +125,34 @@ const Tweet: FC<TweetModel> = ({
     </h3>
     {body}
     <FlexBox>
-      <FlexButton
+      <InteractionButton
         activeColour="29, 161, 242"
         title="comment"
         label="comments"
         icon={faCommentDots}
         itemCount={comments}
       />
-      <FlexButton
+      <InteractionButton
         activeColour="23, 191, 99"
         title="retweet"
         label="retweets"
         icon={faRetweet}
         itemCount={retweets}
       />
-      <FlexButton
+      <InteractionButton
         activeColour="224, 36, 94"
         title="like"
         label="likes"
         icon={faHeart}
         itemCount={likes}
       />
-      <FlexButton
+      <InteractionButton
         activeColour="29, 161, 242"
         title="share"
         label="shares"
         icon={faShare}
-        itemCount={shares}
+        itemCount={shares.length}
+        countIncludesMe={shares.map((s) => s.tag).includes(author.tag)}
       />
     </FlexBox>
   </article>
